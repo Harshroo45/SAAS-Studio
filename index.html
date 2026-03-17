@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vision Infra - ERP Knowledge Base</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* --- CSS Variables & Theming --- */
         :root {
@@ -20,11 +21,12 @@
             --border-color: #e2e8f0;
             --card-bg: #ffffff;
             --code-bg: #1e293b;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --header-bg: #ffffff;
             --hover-bg: #f1f5f9;
-            --flow-shift: 45px; /* Increased shift for a "stretched" horizontal look */
+            --flow-shift: 45px;
+            /* Increased shift for a "stretched" horizontal look */
         }
 
         [data-theme="dark"] {
@@ -39,29 +41,54 @@
             --border-color: #334155;
             --card-bg: #1e293b;
             --code-bg: #0f172a;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
             --header-bg: #1e293b;
             --hover-bg: #334155;
         }
 
         /* --- Base Reset --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-        }
+        /* Update the Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* This applies the new font to everything: buttons, inputs, etc. */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            height: 100vh;
-            overflow: hidden;
-        }
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    /* Smooth font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em; /* Tighter spacing for a pro look */
+}
 
-        .app-container { display: flex; height: 100%; position: relative; }
+.sidebar-header h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+.nav-links li {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+        .app-container {
+            display: flex;
+            height: 100%;
+            position: relative;
+        }
 
         /* --- Sidebar & Overlay --- */
         .sidebar {
@@ -77,7 +104,10 @@
         .sidebar-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
             opacity: 0;
@@ -89,12 +119,21 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-icon { font-size: 24px; color: var(--primary-color); }
+        .logo-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
 
-        .nav-links { list-style: none; padding: 20px 0; flex-grow: 1; overflow-y: auto;}
+        .nav-links {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
         .nav-links li {
             padding: 12px 24px;
             display: flex;
@@ -105,7 +144,9 @@
             font-weight: 500;
             border-right: 4px solid transparent;
         }
-        .nav-links li:hover, .nav-links li.active {
+
+        .nav-links li:hover,
+        .nav-links li.active {
             background-color: var(--sidebar-hover);
             color: #ffffff;
             border-right-color: var(--primary-color);
@@ -113,27 +154,52 @@
 
         .user-profile {
             padding: 20px 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
         .avatar {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background-color: var(--primary-color);
             border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-weight: bold; color: white; flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
             overflow: hidden;
         }
+
         .avatar img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
-        .user-info { display: flex; flex-direction: column; overflow: hidden; }
-        .user-info .name { font-size: 14px; font-weight: 600; color: white; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
-        .user-info .role { font-size: 12px; color: #94a3b8; }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .user-info .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .user-info .role {
+            font-size: 12px;
+            color: #94a3b8;
+        }
 
         /* --- Main Content --- */
         .main-content {
@@ -199,32 +265,58 @@
             align-items: center;
             justify-content: center;
         }
-        .theme-toggle:hover { color: var(--primary-color); }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
 
         /* Universal Search Bar */
-        .search-container { position: relative; width: 100%; }
-        .search-icon {
-            position: absolute; left: 16px; top: 50%;
-            transform: translateY(-50%); color: var(--text-secondary);
+        .search-container {
+            position: relative;
+            width: 100%;
         }
-        .search-clear-btn {
-            position: absolute; right: 80px; top: 50%;
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
             transform: translateY(-50%);
-            background: none; border: none;
             color: var(--text-secondary);
-            cursor: pointer; font-size: 18px;
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 18px;
             padding: 4px 8px;
             display: none;
         }
-        .search-clear-btn:hover { color: var(--primary-color); }
-        .search-clear-btn.visible { display: block; }
+
+        .search-clear-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .search-clear-btn.visible {
+            display: block;
+        }
+
         .search-shortcut {
-            position: absolute; right: 16px; top: 50%;
+            position: absolute;
+            right: 16px;
+            top: 50%;
             transform: translateY(-50%);
             background-color: var(--bg-main);
             border: 1px solid var(--border-color);
-            padding: 2px 6px; border-radius: 4px;
-            font-size: 11px; color: var(--text-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--text-secondary);
             pointer-events: none;
         }
 
@@ -232,54 +324,107 @@
             width: 100%;
             padding: 16px 16px 16px 48px;
             border: 2px solid var(--border-color);
-            border-radius: 8px; font-size: 16px;
+            border-radius: 8px;
+            font-size: 16px;
             background-color: var(--bg-main);
             color: var(--text-primary);
         }
+
         #universal-search:focus {
-            outline: none; border-color: var(--primary-color);
+            outline: none;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         /* --- Scrollable Content Wrapper --- */
-        .content-wrapper { padding: 40px; overflow-y: auto; flex-grow: 1; }
-        .content-section { 
-            display: none; 
-            animation: fadeIn 0.3s ease; 
-            margin-bottom: 24px; 
+        .content-wrapper {
+            padding: 40px;
+            overflow-y: auto;
+            flex-grow: 1;
         }
-        .content-section.active { display: block; }
-        .search-hidden { display: none !important; }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+            margin-bottom: 24px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .search-hidden {
+            display: none !important;
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .section-header { margin-bottom: 24px; }
-        .section-header h1 { font-size: 24px; color: var(--text-primary); margin-bottom: 4px; }
-        .section-header p { color: var(--text-secondary); font-size: 14px; }
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-header h1 {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
 
         #search-results-header {
-            display: none; margin-bottom: 30px; padding-bottom: 12px;
+            display: none;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
             border-bottom: 2px solid var(--primary-color);
         }
 
         /* --- Reusable Cards --- */
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px; padding: 24px; 
-            margin-bottom: 28px; 
-            box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
         }
+
         .card-tag {
-            display: inline-block; background-color: var(--hover-bg);
-            color: var(--primary-color); font-size: 11px; padding: 4px 8px;
-            border-radius: 4px; margin-bottom: 12px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-block;
+            background-color: var(--hover-bg);
+            color: var(--primary-color);
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .card h3 { margin-bottom: 8px; font-size: 18px; }
-        .description { color: var(--text-secondary); margin-bottom: 20px; font-size: 14px; line-height: 1.5; }
+
+        .card h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
         /* =======================================================
            DYNAMIC DIAGONAL FLOWCHART (STRETCHED & SINGLE-LINE)
@@ -287,43 +432,43 @@
         .dynamic-flow-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; 
-            padding: 30px 20px; 
-            overflow-x: auto; 
+            align-items: flex-start;
+            padding: 30px 20px;
+            overflow-x: auto;
             background-color: var(--bg-main);
             border-radius: 8px;
             border: 1px dashed var(--border-color);
-            -webkit-overflow-scrolling: touch; 
+            -webkit-overflow-scrolling: touch;
         }
 
         .flow-step-wrapper {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; 
+            align-items: flex-start;
             position: relative;
-            margin-left: calc(var(--index) * var(--flow-shift)); 
+            margin-left: calc(var(--index) * var(--flow-shift));
         }
 
         .dynamic-node {
             background-color: var(--card-bg);
             border: 2px solid var(--border-color);
-            padding: 10px 24px; 
+            padding: 10px 24px;
             border-radius: 8px;
             font-weight: 600;
             color: var(--text-primary);
             font-size: 14px;
             box-shadow: var(--shadow-sm);
             z-index: 2;
-            
+
             /* FORCES TEXT TO STAY ON ONE LINE */
-            white-space: nowrap; 
+            white-space: nowrap;
             text-align: center;
-            min-width: 200px; 
+            min-width: 200px;
             /* max-width removed to allow unlimited single-line expansion */
-            
+
             line-height: 1.4;
             cursor: default;
-            
+
             /* Animations */
             opacity: 0;
             animation: fadeSlideUp 0.6s ease forwards;
@@ -354,7 +499,7 @@
         /* SVG Arrow styles - Made much shorter vertically */
         .diag-arrow-svg {
             width: 100px;
-            height: 25px; 
+            height: 25px;
             z-index: 1;
             margin-top: -3px;
             margin-bottom: -3px;
@@ -379,54 +524,139 @@
 
         /* Flowchart Keyframes */
         @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        @keyframes drawLine { to { stroke-dashoffset: 0; } }
-        @keyframes fadeInArrow { to { opacity: 1; } }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeInArrow {
+            to {
+                opacity: 1;
+            }
+        }
 
 
         /* --- SQL Blocks & Other Elements --- */
-        .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; }
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
         .copy-btn {
-            background-color: transparent; border: 1px solid var(--border-color);
-            color: var(--text-primary); padding: 6px 12px; border-radius: 6px;
-            cursor: pointer; font-size: 12px; font-weight: 500;
-            display: flex; align-items: center; gap: 6px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .copy-btn:hover { background-color: var(--hover-bg); }
+
+        .copy-btn:hover {
+            background-color: var(--hover-bg);
+        }
+
         .code-block {
-            background-color: var(--code-bg); color: #e2e8f0;
-            padding: 16px; border-radius: 8px; overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace; font-size: 13px;
-            line-height: 1.5; border: 1px solid var(--border-color);
+            background-color: var(--code-bg);
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 1px solid var(--border-color);
         }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border-color); }
-        .data-table th { background-color: var(--bg-main); font-weight: 600; color: var(--text-secondary); }
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background-color: var(--bg-main);
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
         .link-card {
-            display: flex; align-items: flex-start; gap: 16px;
-            background-color: var(--card-bg); padding: 20px;
-            border-radius: 12px; border: 1px solid var(--border-color);
-            text-decoration: none; color: inherit;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
         }
-        .link-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--primary-color); }
-        .link-icon { font-size: 24px; color: var(--primary-color); background-color: rgba(59, 130, 246, 0.1); padding: 12px; border-radius: 8px; }
-        .link-info h3 { font-size: 16px; margin-bottom: 4px; }
-        .link-info p { font-size: 13px; color: var(--text-secondary); }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .link-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            background-color: rgba(59, 130, 246, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .link-info h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .link-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
 
         /* =======================================================
            MOBILE RESPONSIVE MEDIA QUERIES 
            ======================================================= */
         @media (max-width: 768px) {
             :root {
-                --flow-shift: 25px; 
+                --flow-shift: 25px;
             }
 
             .diag-arrow-svg {
-                transform: scaleX(0.55); 
-                transform-origin: 30px 0; 
+                transform: scaleX(0.55);
+                transform-origin: 30px 0;
             }
 
             .sidebar {
@@ -435,19 +665,47 @@
                 top: 0;
                 bottom: 0;
                 transition: left 0.3s ease;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
             }
 
-            .sidebar.active-mobile { left: 0; }
-            .sidebar-overlay.active { display: block; opacity: 1; }
-            .mobile-menu-btn { display: block; }
-            .top-header { padding: 16px 20px; }
-            .content-wrapper { padding: 20px 15px; }
-            .card { padding: 16px; margin-bottom: 20px; }
-            
-            .datetime-display { font-size: 12px; }
-            .search-shortcut { display: none; }
-            .controls-right { gap: 12px; padding: 6px 12px; }
+            .sidebar.active-mobile {
+                left: 0;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .top-header {
+                padding: 16px 20px;
+            }
+
+            .content-wrapper {
+                padding: 20px 15px;
+            }
+
+            .card {
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+
+            .datetime-display {
+                font-size: 12px;
+            }
+
+            .search-shortcut {
+                display: none;
+            }
+
+            .controls-right {
+                gap: 12px;
+                padding: 6px 12px;
+            }
 
             .dynamic-node {
                 min-width: 150px;
@@ -455,13 +713,49 @@
                 padding: 10px 16px;
                 font-size: 13px;
             }
+
+            /* --- Structured Table Section Styles --- */
+            .table-name-title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: 'Courier New', Courier, monospace;
+                /* Gives a technical database feel */
+                color: var(--primary-color);
+                margin-top: 4px;
+            }
+
+            .table-description-box {
+                margin-top: 15px;
+                padding: 12px 16px;
+                background-color: var(--bg-main);
+                border-left: 4px solid var(--primary-color);
+                border-radius: 4px;
+            }
+
+            .table-description-box strong {
+                display: block;
+                font-size: 11px;
+                text-transform: uppercase;
+                color: var(--text-secondary);
+                margin-bottom: 5px;
+                letter-spacing: 0.5px;
+            }
+
+            .table-description-box p {
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.6;
+                color: var(--text-primary);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="app-container">
-        
+
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         <aside class="sidebar" id="sidebar">
@@ -488,7 +782,7 @@
         </aside>
 
         <main class="main-content">
-            
+
             <header class="top-header">
                 <div class="top-controls">
                     <div class="mobile-menu-btn" id="mobile-menu-btn">
@@ -510,13 +804,14 @@
                 <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
-                    <button class="search-clear-btn" id="search-clear-btn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="search-clear-btn" id="search-clear-btn" title="Clear search"><i
+                            class="fa-solid fa-xmark"></i></button>
                     <div class="search-shortcut">Ctrl + /</div>
                 </div>
             </header>
 
             <div class="content-wrapper" id="main-scroll-area">
-                
+
                 <div id="search-results-header">
                     <h1>Search Results</h1>
                     <p id="search-count">Showing matches across all categories.</p>
@@ -531,8 +826,9 @@
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
                         <h3>Gate Entry to Vendor Process</h3>
-                        <p class="description">Standard progression flow from initial gate entry deletion to vendor assignment.</p>
-                        
+                        <p class="description">Standard progression flow from initial gate entry deletion to vendor
+                            assignment.</p>
+
                         <div id="path-gate-entry" class="dynamic-flow-container"></div>
                     </div>
 
@@ -540,7 +836,7 @@
                         <span class="card-tag">Hierarchical Path</span>
                         <h3>Stock Adjustment Register</h3>
                         <p class="description">Navigate here to view or approve manual stock level corrections.</p>
-                        
+
                         <div id="path-stock-adj" class="dynamic-flow-container"></div>
                     </div>
                 </section>
@@ -561,7 +857,7 @@
                         </div>
                         <p class="description">Pulls the last 50 item receipts including vendor details.</p>
                         <div class="code-block">
-<pre><code>SELECT 
+                            <pre><code>SELECT 
     r.Receipt_ID, 
     r.Item_Code, 
     i.Item_Name, 
@@ -578,39 +874,51 @@ LIMIT 50;</code></pre>
                 <section id="tables-section" class="content-section">
                     <div class="section-header">
                         <h1>Database Tables</h1>
-                        <p>Core ERP table structures and definitions.</p>
+                        <p>Comprehensive ERP schema directory and data definitions.</p>
                     </div>
 
                     <div class="card searchable-item" data-category="Table">
-                        <span class="card-tag">Database Table</span>
-                        <h3>tbl_ItemMaster</h3>
-                        <p class="description">The central repository for all inventory, non-inventory, and fixed asset items.</p>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Column Name</th>
-                                    <th>Data Type</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Item_Code</td>
-                                    <td>VARCHAR(50) (PK)</td>
-                                    <td>Unique identifier for the item.</td>
-                                </tr>
-                                <tr>
-                                    <td>Item_Category</td>
-                                    <td>INT (FK)</td>
-                                    <td>Links to tbl_Categories.</td>
-                                </tr>
-                                <tr>
-                                    <td>Current_Stock</td>
-                                    <td>DECIMAL(10,2)</td>
-                                    <td>Real-time quantity available.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag">Core Schema</span>
+                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_ItemMaster</h3>
+                            </div>
+                        </div>
+                        <div class="table-description-box">
+                            <strong>Description:</strong>
+                            <p>The central repository for all inventory, non-inventory, and fixed asset items. Acts as
+                                the primary source of truth for stock levels and item categorization across all modules.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Table">
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag">Transaction Schema</span>
+                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
+                            </div>
+                        </div>
+                        <div class="table-description-box">
+                            <strong>Description:</strong>
+                            <p>Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry
+                                numbers, and Warehouse locations to maintain a full audit trail of inventory
+                                procurement.</p>
+                        </div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Table">
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag">System Schema</span>
+                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
+                            </div>
+                        </div>
+                        <div class="table-description-box">
+                            <strong>Description:</strong>
+                            <p>Maintains a historical record of all user actions within the ERP system, including login
+                                timestamps, module access, and data modification entries for security auditing.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -619,7 +927,7 @@ LIMIT 50;</code></pre>
                         <h1>Important Links</h1>
                         <p>External dashboards and documentation.</p>
                     </div>
-                    
+
                     <div class="links-grid">
                         <a href="#" class="link-card searchable-item" data-category="Link">
                             <i class="fa-solid fa-server link-icon"></i>
@@ -648,7 +956,8 @@ LIMIT 50;</code></pre>
                     <div class="card searchable-item" data-category="Other">
                         <span class="card-tag">Config Note</span>
                         <h3>Environment Variables</h3>
-                        <p class="description">Standard connection strings for local C# ASP.NET Core environments. Update your appsettings.json accordingly.</p>
+                        <p class="description">Standard connection strings for local C# ASP.NET Core environments.
+                            Update your appsettings.json accordingly.</p>
                     </div>
                 </section>
 
@@ -658,7 +967,7 @@ LIMIT 50;</code></pre>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // --- 0. Mobile Sidebar Logic ---
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const sidebar = document.getElementById('sidebar');
@@ -682,17 +991,17 @@ LIMIT 50;</code></pre>
             const clockDisplay = document.querySelector('#clock-display span');
             function updateClock() {
                 const now = new Date();
-                const isMobile = window.innerWidth <= 768; 
-                
-                const options = isMobile 
+                const isMobile = window.innerWidth <= 768;
+
+                const options = isMobile
                     ? { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
                     : { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                
+
                 clockDisplay.textContent = now.toLocaleDateString('en-US', options);
             }
             setInterval(updateClock, 1000);
             updateClock();
-            window.addEventListener('resize', updateClock); 
+            window.addEventListener('resize', updateClock);
 
 
             // --- 2. Dark Mode Toggle ---
@@ -713,7 +1022,7 @@ LIMIT 50;</code></pre>
             });
 
             function updateThemeIcon(theme) {
-                if(theme === 'dark') {
+                if (theme === 'dark') {
                     themeIcon.classList.replace('fa-moon', 'fa-sun');
                 } else {
                     themeIcon.classList.replace('fa-sun', 'fa-moon');
@@ -727,11 +1036,11 @@ LIMIT 50;</code></pre>
             const searchResultsHeader = document.getElementById('search-results-header');
             const allItems = document.querySelectorAll('.searchable-item');
             const sectionHeaders = document.querySelectorAll('.section-header');
-            let activeTabId = 'paths-section'; 
+            let activeTabId = 'paths-section';
 
             navItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    if(searchInput.value !== '') {
+                    if (searchInput.value !== '') {
                         searchInput.value = '';
                         resetSearchMode();
                     }
@@ -741,7 +1050,7 @@ LIMIT 50;</code></pre>
                     activeTabId = item.getAttribute('data-target');
                     document.getElementById(activeTabId).classList.add('active');
 
-                    if(window.innerWidth <= 768) {
+                    if (window.innerWidth <= 768) {
                         closeSidebar();
                     }
                 });
@@ -749,19 +1058,19 @@ LIMIT 50;</code></pre>
 
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase().trim();
-                
+
                 if (searchTerm.length > 0) {
                     searchResultsHeader.style.display = 'block';
                     sectionHeaders.forEach(h => h.style.display = 'none');
-                    navItems.forEach(nav => nav.classList.remove('active')); 
-                    
+                    navItems.forEach(nav => nav.classList.remove('active'));
+
                     let matchCount = 0;
 
                     allItems.forEach(item => {
                         const text = item.textContent.toLowerCase();
                         if (text.includes(searchTerm)) {
                             item.classList.remove('search-hidden');
-                            item.closest('.content-section').classList.add('active'); 
+                            item.closest('.content-section').classList.add('active');
                             matchCount++;
                         } else {
                             item.classList.add('search-hidden');
@@ -770,7 +1079,7 @@ LIMIT 50;</code></pre>
 
                     contentSections.forEach(section => {
                         const visibleItems = section.querySelectorAll('.searchable-item:not(.search-hidden)');
-                        if(visibleItems.length === 0) {
+                        if (visibleItems.length === 0) {
                             section.classList.remove('active');
                         } else {
                             section.classList.add('active');
@@ -790,7 +1099,7 @@ LIMIT 50;</code></pre>
                 contentSections.forEach(section => section.classList.remove('active'));
                 document.getElementById(activeTabId).classList.add('active');
                 navItems.forEach(nav => {
-                    if(nav.getAttribute('data-target') === activeTabId) {
+                    if (nav.getAttribute('data-target') === activeTabId) {
                         nav.classList.add('active');
                     }
                 });
@@ -807,7 +1116,7 @@ LIMIT 50;</code></pre>
             // --- 4.5 Search Clear Button ---
             const clearBtn = document.getElementById('search-clear-btn');
             searchInput.addEventListener('input', () => {
-                if(searchInput.value.length > 0) {
+                if (searchInput.value.length > 0) {
                     clearBtn.classList.add('visible');
                 } else {
                     clearBtn.classList.remove('visible');
@@ -832,7 +1141,7 @@ LIMIT 50;</code></pre>
                         btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
                         btn.style.color = 'var(--primary-color)';
                         btn.style.borderColor = 'var(--primary-color)';
-                        
+
                         setTimeout(() => {
                             btn.innerHTML = originalHtml;
                             btn.style.color = '';
@@ -846,8 +1155,8 @@ LIMIT 50;</code></pre>
             function buildDiagonalPath(containerId, steps) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
-                
-                container.innerHTML = ''; 
+
+                container.innerHTML = '';
 
                 steps.forEach((step, index) => {
                     const wrapper = document.createElement('div');
@@ -864,15 +1173,15 @@ LIMIT 50;</code></pre>
                         const svgNS = "http://www.w3.org/2000/svg";
                         const svg = document.createElementNS(svgNS, "svg");
                         svg.setAttribute("class", "diag-arrow-svg");
-                        svg.setAttribute("viewBox", "0 0 100 25"); 
-                        
+                        svg.setAttribute("viewBox", "0 0 100 25");
+
                         const path = document.createElementNS(svgNS, "path");
                         path.setAttribute("class", "diag-line");
                         path.setAttribute("d", "M 30,0 C 30,12 75,12 75,25");
-                        
+
                         const arrowHead = document.createElementNS(svgNS, "polygon");
                         arrowHead.setAttribute("class", "diag-head");
-                        arrowHead.setAttribute("points", "70,18 80,18 75,25"); 
+                        arrowHead.setAttribute("points", "70,18 80,18 75,25");
 
                         svg.appendChild(path);
                         svg.appendChild(arrowHead);
@@ -893,4 +1202,5 @@ LIMIT 50;</code></pre>
         });
     </script>
 </body>
+
 </html>
