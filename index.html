@@ -839,7 +839,19 @@ h1, h2, h3 {
 
                         <div id="path-stock-adj" class="dynamic-flow-container"></div>
                     </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3>Stock Adjustment Register</h3>
+                        <p class="description">Navigate here to view or approve manual stock level corrections.</p>
+
+                        <div id="issue-item" class="dynamic-flow-container"></div>
+                    </div>
+
                 </section>
+
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------->
 
                 <section id="sql-section" class="content-section">
                     <div class="section-header">
@@ -1198,6 +1210,9 @@ LIMIT 50;</code></pre>
 
             const stockAdjPath = ["Stores", "Stock Adjustment", "View Register"];
             buildDiagonalPath('path-stock-adj', stockAdjPath);
+
+             const issueItemPath = ["Stores", "Issue Item", "View Register"];
+             buildDiagonalPath('issue-item', issueItemPath);
 
         });
     </script>
