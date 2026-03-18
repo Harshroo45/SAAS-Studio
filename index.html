@@ -27,6 +27,8 @@
             --hover-bg: #f1f5f9;
             --flow-shift: 45px;
             /* Increased shift for a "stretched" horizontal look */
+            --highlight-bg: #fef08a; /* Custom highlight color (yellow) */
+            --highlight-color: #854d0e;
         }
 
         [data-theme="dark"] {
@@ -45,44 +47,50 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
             --header-bg: #1e293b;
             --hover-bg: #334155;
+            --highlight-bg: #854d0e; /* Dark mode highlight color */
+            --highlight-color: #fef08a;
         }
 
         /* --- Base Reset --- */
         /* Update the Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* This applies the new font to everything: buttons, inputs, etc. */
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* This applies the new font to everything: buttons, inputs, etc. */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
 
-body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    height: 100vh;
-    overflow: hidden;
-    /* Smooth font rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-h1, h2, h3 {
-    font-weight: 700;
-    letter-spacing: -0.02em; /* Tighter spacing for a pro look */
-}
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            /* Smooth font rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-.sidebar-header h2 {
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 18px;
-}
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            /* Tighter spacing for a pro look */
+        }
 
-.nav-links li {
-    font-weight: 500;
-    font-size: 14px;
-}
+        .sidebar-header h2 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+
+        .nav-links li {
+            font-weight: 500;
+            font-size: 14px;
+        }
 
         .app-container {
             display: flex;
@@ -426,6 +434,16 @@ h1, h2, h3 {
             line-height: 1.5;
         }
 
+        /* --- Highlighting Styles --- */
+        .search-highlight {
+            background-color: var(--highlight-bg);
+            color: var(--highlight-color);
+            border-radius: 3px;
+            padding: 0 2px;
+            font-weight: 600;
+            transition: none; /* Prevent weird visual bugs during typing */
+        }
+
         /* =======================================================
            DYNAMIC DIAGONAL FLOWCHART (STRETCHED & SINGLE-LINE)
            ======================================================= */
@@ -761,7 +779,7 @@ h1, h2, h3 {
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <i class="fa-solid fa-network-wired logo-icon"></i>
-                <h2>Vision ERP</h2>
+                <h2>HARSH.ERP</h2>
             </div>
             <ul class="nav-links">
                 <li class="active" data-target="paths-section"><i class="fa-solid fa-route"></i> Navigation Paths</li>
@@ -825,35 +843,112 @@ h1, h2, h3 {
 
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
-                        <h3>Gate Entry to Vendor Process</h3>
-                        <p class="description">Standard progression flow from initial gate entry deletion to vendor
-                            assignment.</p>
+                        <h3 class="search-target">Gate Entry | Day to Day Transactions | 3P</h3>
+                        <p class="description search-target">Gate Entry process - (3P)</p>
 
                         <div id="path-gate-entry" class="dynamic-flow-container"></div>
                     </div>
 
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
-                        <h3>Stock Adjustment Register</h3>
-                        <p class="description">Navigate here to view or approve manual stock level corrections.</p>
+                        <h3 class="search-target">Issue Item</h3>
+                        <p class="description search-target">D1SERIES - (Debit Note) | VGRTN - (Delivery Challan Returnable) | VNONR - (Delivery Challan Non Returnable)</p>
 
                         <div id="path-stock-adj" class="dynamic-flow-container"></div>
                     </div>
 
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
-                        <h3>Stock Adjustment Register</h3>
-                        <p class="description">Navigate here to view or approve manual stock level corrections.</p>
+                        <h3 class="search-target">Consumption | Issue Production | DCR | 43</h3>
+                        <p class="description search-target">M1SERIES - (General Maintenance Order) | M2SERIES - (Breakdown Maintenance Order) | M3SERIES - (Scheduled Maintenance Order) | M4SERIES - (Running With Repair Order) | ISHSD | ISSPR | ISSTR | ISSUE | ISTRD</p>
 
                         <div id="issue-item" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Log Sheet | Entry | PT</h3>
+                        <p class="description search-target">LSSERIES - (PT)</p>
+
+                        <div id="Log-Sheet" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Purchase Order - (PO) | 37</h3>
+                        <p class="description search-target">POSERIES | SOSERIES | TRDPO | CCTPO | </p>
+
+                        <div id="Purchase-Order" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Purchase Requisition - (PR) | Indent | 3E</h3>
+                        <p class="description search-target">PRSERIES</p>
+
+                        <div id="Purchase-Requisition" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Goods Receipt Note - (GRN) | 30</h3>
+                        <p class="description search-target">GRNSERIES | GRISERIES | GRRSERIES | RCMRG | UNRCM</p>
+
+                        <div id="GRN" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Purchase Bill Passing/Booking (Accounts Dept.)</h3>
+                        <p class="description search-target">PBAST | PBP SERIES</p>
+
+                        <div id="Purchase-Bill" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">JV | Valuation</h3>
+                        <p class="description search-target">Valuation Process</p>
+
+                        <div id="JV" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Delivery Challan - (DC)</h3>
+                        <p class="description search-target">T0001 | DC </p>
+
+                        <div id="Delivery-Challan" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Delete Debit Note/ Credit Note</h3>
+                        <p class="description search-target">PDN01 | PDNKA </p>
+
+                        <div id="Delete-Debit-Note-Credit-Note" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Expense Entry</h3>
+                        <p class="description search-target">EXBO1 | EXBO2 | EXCAP</p>
+
+                        <div id="Expense-Entry" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">PO Amendment</h3>
+                        <p class="description search-target">AMDHI | POAKA | POAMD | POAMT | POFAR | POLG2 | PORTO | POTRD</p>
+
+                        <div id="PO-Amendment" class="dynamic-flow-container"></div>
                     </div>
 
                 </section>
 
 
-            <!---------------------------------------------------------------------------------------------------------------------------------------->
-
-                <section id="sql-section" class="content-section">
+            <section id="sql-section" class="content-section">
                     <div class="section-header">
                         <h1>SQL Queries</h1>
                         <p>Frequently used scripts for data extraction and reporting.</p>
@@ -863,11 +958,11 @@ h1, h2, h3 {
                         <div class="card-header-flex">
                             <div>
                                 <span class="card-tag">SQL Script</span>
-                                <h3>Get Latest Inventory Receipts</h3>
+                                <h3 class="search-target">Get Latest Inventory Receipts</h3>
                             </div>
                             <button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy SQL</button>
                         </div>
-                        <p class="description">Pulls the last 50 item receipts including vendor details.</p>
+                        <p class="description search-target">Pulls the last 50 item receipts including vendor details.</p>
                         <div class="code-block">
                             <pre><code>SELECT 
     r.Receipt_ID, 
@@ -893,12 +988,12 @@ LIMIT 50;</code></pre>
                         <div class="card-header-flex">
                             <div>
                                 <span class="card-tag">Core Schema</span>
-                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_ItemMaster</h3>
+                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_ItemMaster</h3>
                             </div>
                         </div>
                         <div class="table-description-box">
                             <strong>Description:</strong>
-                            <p>The central repository for all inventory, non-inventory, and fixed asset items. Acts as
+                            <p class="search-target">The central repository for all inventory, non-inventory, and fixed asset items. Acts as
                                 the primary source of truth for stock levels and item categorization across all modules.
                             </p>
                         </div>
@@ -908,12 +1003,12 @@ LIMIT 50;</code></pre>
                         <div class="card-header-flex">
                             <div>
                                 <span class="card-tag">Transaction Schema</span>
-                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
+                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
                             </div>
                         </div>
                         <div class="table-description-box">
                             <strong>Description:</strong>
-                            <p>Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry
+                            <p class="search-target">Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry
                                 numbers, and Warehouse locations to maintain a full audit trail of inventory
                                 procurement.</p>
                         </div>
@@ -923,12 +1018,12 @@ LIMIT 50;</code></pre>
                         <div class="card-header-flex">
                             <div>
                                 <span class="card-tag">System Schema</span>
-                                <h3 class="table-name-title"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
+                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
                             </div>
                         </div>
                         <div class="table-description-box">
                             <strong>Description:</strong>
-                            <p>Maintains a historical record of all user actions within the ERP system, including login
+                            <p class="search-target">Maintains a historical record of all user actions within the ERP system, including login
                                 timestamps, module access, and data modification entries for security auditing.</p>
                         </div>
                     </div>
@@ -945,16 +1040,16 @@ LIMIT 50;</code></pre>
                             <i class="fa-solid fa-server link-icon"></i>
                             <div class="link-info">
                                 <span class="card-tag">External Link</span>
-                                <h3>Production Database Dashboard</h3>
-                                <p>Monitor live server health and active connections.</p>
+                                <h3 class="search-target">Production Database Dashboard</h3>
+                                <p class="search-target">Monitor live server health and active connections.</p>
                             </div>
                         </a>
                         <a href="#" class="link-card searchable-item" data-category="Link">
                             <i class="fa-solid fa-book link-icon"></i>
                             <div class="link-info">
                                 <span class="card-tag">External Link</span>
-                                <h3>API Documentation</h3>
-                                <p>Endpoints for integrating third-party tools.</p>
+                                <h3 class="search-target">API Documentation</h3>
+                                <p class="search-target">Endpoints for integrating third-party tools.</p>
                             </div>
                         </a>
                     </div>
@@ -967,8 +1062,8 @@ LIMIT 50;</code></pre>
                     </div>
                     <div class="card searchable-item" data-category="Other">
                         <span class="card-tag">Config Note</span>
-                        <h3>Environment Variables</h3>
-                        <p class="description">Standard connection strings for local C# ASP.NET Core environments.
+                        <h3 class="search-target">Environment Variables</h3>
+                        <p class="description search-target">Standard connection strings for local C# ASP.NET Core environments.
                             Update your appsettings.json accordingly.</p>
                     </div>
                 </section>
@@ -1041,7 +1136,7 @@ LIMIT 50;</code></pre>
                 }
             }
 
-            // --- 3. Tab Navigation & Robust Search Logic ---
+            // --- 3. Tab Navigation & Robust Search Logic with Highlighting ---
             const navItems = document.querySelectorAll('.nav-links li');
             const contentSections = document.querySelectorAll('.content-section');
             const searchInput = document.getElementById('universal-search');
@@ -1049,6 +1144,13 @@ LIMIT 50;</code></pre>
             const allItems = document.querySelectorAll('.searchable-item');
             const sectionHeaders = document.querySelectorAll('.section-header');
             let activeTabId = 'paths-section';
+
+            // Store original HTML of search targets to allow clean un-highlighting
+            const searchTargets = document.querySelectorAll('.search-target, .dynamic-node');
+            searchTargets.forEach(target => {
+                // Save original content in a data attribute
+                target.dataset.originalHtml = target.innerHTML;
+            });
 
             navItems.forEach(item => {
                 item.addEventListener('click', () => {
@@ -1068,10 +1170,47 @@ LIMIT 50;</code></pre>
                 });
             });
 
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase().trim();
+            // Highlight Helper Function
+            function highlightText(element, searchTerm) {
+                const originalHtml = element.dataset.originalHtml;
+                if (!searchTerm) {
+                    element.innerHTML = originalHtml;
+                    return;
+                }
 
-                if (searchTerm.length > 0) {
+                // Temporary wrapper to parse HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = originalHtml;
+
+                // Function to recursively replace text inside nodes, ignoring HTML tags like <i>
+                function walkDom(node) {
+                    if (node.nodeType === 3) { // Text node
+                        const text = node.nodeValue;
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        if (regex.test(text)) {
+                            const newHtml = text.replace(regex, '<span class="search-highlight">$1</span>');
+                            const replacementNode = document.createElement('span');
+                            replacementNode.innerHTML = newHtml;
+                            node.parentNode.replaceChild(replacementNode, node);
+                        }
+                    } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+                        for (let i = 0; i < node.childNodes.length; i++) {
+                            walkDom(node.childNodes[i]);
+                        }
+                    }
+                }
+                walkDom(tempDiv);
+                element.innerHTML = tempDiv.innerHTML;
+            }
+
+
+            searchInput.addEventListener('input', (e) => {
+                // Escape special regex characters in the search term to prevent breaking the highlighting
+                const rawTerm = e.target.value.trim();
+                const searchTerm = rawTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
+                const searchLower = rawTerm.toLowerCase();
+
+                if (searchLower.length > 0) {
                     searchResultsHeader.style.display = 'block';
                     sectionHeaders.forEach(h => h.style.display = 'none');
                     navItems.forEach(nav => nav.classList.remove('active'));
@@ -1080,12 +1219,20 @@ LIMIT 50;</code></pre>
 
                     allItems.forEach(item => {
                         const text = item.textContent.toLowerCase();
-                        if (text.includes(searchTerm)) {
+                        if (text.includes(searchLower)) {
                             item.classList.remove('search-hidden');
                             item.closest('.content-section').classList.add('active');
                             matchCount++;
+                            
+                            // Apply highlights to all text targets within this matched item
+                            const targets = item.querySelectorAll('.search-target, .dynamic-node');
+                            targets.forEach(target => highlightText(target, searchTerm));
+                            
                         } else {
                             item.classList.add('search-hidden');
+                            // Remove highlights if hidden
+                            const targets = item.querySelectorAll('.search-target, .dynamic-node');
+                            targets.forEach(target => highlightText(target, ''));
                         }
                     });
 
@@ -1115,6 +1262,12 @@ LIMIT 50;</code></pre>
                         nav.classList.add('active');
                     }
                 });
+                
+                // Clear all highlights
+                searchTargets.forEach(target => highlightText(target, ''));
+                
+                const clearBtn = document.getElementById('search-clear-btn');
+                clearBtn.classList.remove('visible');
             }
 
             // --- 4. Global Keyboard Shortcut (Ctrl + /) ---
@@ -1136,7 +1289,6 @@ LIMIT 50;</code></pre>
             });
             clearBtn.addEventListener('click', () => {
                 searchInput.value = '';
-                clearBtn.classList.remove('visible');
                 resetSearchMode();
                 searchInput.focus();
             });
@@ -1179,6 +1331,10 @@ LIMIT 50;</code></pre>
                     node.className = 'dynamic-node';
                     if (index === steps.length - 1) node.classList.add('final-node');
                     node.textContent = step;
+                    
+                    // SAVE ORIGINAL HTML FOR HIGHLIGHTING LATER!
+                    node.dataset.originalHtml = step; 
+                    
                     wrapper.appendChild(node);
 
                     if (index < steps.length - 1) {
@@ -1205,14 +1361,55 @@ LIMIT 50;</code></pre>
             }
 
             // Generate the paths dynamically
-            const gateEntryPath = ["Gate Entry Delete Gate Entry Delete", "Stores", "Receipt Gate Entry Delete Gate Entry Delete", "Gate Entry IN", "Vendor"];
+            const gateEntryPath = ["Day to Day Transactions", "Stores", "Receipt(Item)", "Gate Entry IN", "Vendor"];
             buildDiagonalPath('path-gate-entry', gateEntryPath);
 
-            const stockAdjPath = ["Stores", "Stock Adjustment", "View Register"];
+            const stockAdjPath = ["Stores", "Issue (Item)", "General"];
             buildDiagonalPath('path-stock-adj', stockAdjPath);
 
-             const issueItemPath = ["Stores", "Issue Item", "View Register"];
-             buildDiagonalPath('issue-item', issueItemPath);
+            const issueItemPath = ["Stores", "Issue Item", "View Register"];
+            buildDiagonalPath('issue-item', issueItemPath);
+
+            const logSheetPath = ["Day to Day Transactions", "Project (WBS)", "Resource Utilization"];
+            buildDiagonalPath('Log-Sheet', logSheetPath);
+
+            const purchaseOrderPath = ["Day to Day Transactions", "Purchase + VRM", "Order/Amendment/Schedule", "Order"];
+            buildDiagonalPath('Purchase-Order', purchaseOrderPath);
+
+            const purchaseRequisitionPath = ["Day to Day Transactions", "Purchase + VRM", "Indent"];
+            buildDiagonalPath('Purchase-Requisition', purchaseRequisitionPath);
+
+            const grnPath = ["Day to Day Transactions", "Stores", "Receipt(Item)", "Party (DC)/GIN", "Goods/Material Receipt Note"];
+            buildDiagonalPath('GRN', grnPath);
+
+            const purchaseBillPath = ["Day to Day Transactions", "Purchase + VRM", "Receipt Bill", "Party"];
+            buildDiagonalPath('Purchase-Bill', purchaseBillPath);
+
+            const jvPath = ["Day to Day Transactions", "Accounts(G/L)", "Journal(JVs)", "Local"];
+            buildDiagonalPath('JV', jvPath);
+
+            const deliveryChallanPath = ["Day to Day Transactions", "Sales", "Transfer - (Item)", "Intra", "W -> W", "Remote Transfer to Transit"];
+            buildDiagonalPath('Delivery-Challan', deliveryChallanPath);
+
+            const deleteDNPath = ["Day to Day Transactions", "Accounts(G/L)", "Purchase", "Debit Note/Credit Note"];
+            buildDiagonalPath('Delete-Debit-Note-Credit-Note', deleteDNPath);
+
+            const expenseEntryPath = ["Day to Day Transactions", "Accounts(G/L)", "Purchase", "Credit"];
+            buildDiagonalPath('Expense-Entry', expenseEntryPath);
+
+            const poAmendmentPath = ["Day to Day Transactions", "Purchase + VRM", "Order/Amendment/Schedule", "Amendment", "Single PO"];
+            buildDiagonalPath('PO-Amendment', poAmendmentPath);
+
+            // Critical fix: Re-capture nodes into searchTargets AFTER JS builds them dynamically
+
+
+
+
+            document.querySelectorAll('.dynamic-node').forEach(node => {
+                if(!node.dataset.originalHtml) {
+                    node.dataset.originalHtml = node.innerHTML;
+                }
+            });
 
         });
     </script>
