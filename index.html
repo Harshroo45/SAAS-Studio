@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Infra - ERP Knowledge Base</title>
+    <title>ERP studio</title>
+    <link rel="icon" type="image/png" href="/Images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* --- CSS Variables & Theming --- */
         :root {
@@ -27,7 +29,8 @@
             --hover-bg: #f1f5f9;
             --flow-shift: 45px;
             /* Increased shift for a "stretched" horizontal look */
-            --highlight-bg: #fef08a; /* Custom highlight color (yellow) */
+            --highlight-bg: #fef08a;
+            /* Custom highlight color (yellow) */
             --highlight-color: #854d0e;
         }
 
@@ -47,7 +50,8 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
             --header-bg: #1e293b;
             --hover-bg: #334155;
-            --highlight-bg: #854d0e; /* Dark mode highlight color */
+            --highlight-bg: #854d0e;
+            /* Dark mode highlight color */
             --highlight-color: #fef08a;
         }
 
@@ -441,7 +445,8 @@
             border-radius: 3px;
             padding: 0 2px;
             font-weight: 600;
-            transition: none; /* Prevent weird visual bugs during typing */
+            transition: none;
+            /* Prevent weird visual bugs during typing */
         }
 
         /* =======================================================
@@ -766,7 +771,93 @@
                 line-height: 1.6;
                 color: var(--text-primary);
             }
+
+
         }
+
+        /* --- Number-Based Icon Block --- */
+        .link-number-icon {
+            font-size: 26px;
+            font-weight: 800;
+            /* Extra bold to make it pop */
+            color: var(--primary-color);
+            background-color: rgba(59, 130, 246, 0.1);
+            /* Fixed width and height ensure it remains a perfect square */
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+            /* Prevents the box from shrinking if the text next to it is long */
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* --- Database Tables Grid & Upgrades --- */
+.tables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+.table-header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.table-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.copy-table-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    opacity: 0.5;
+}
+
+.card:hover .copy-table-btn {
+    opacity: 1; /* Appears clearly when hovering over the card */
+}
+
+.copy-table-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--hover-bg);
+}
+
+.env-badges {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.env-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.env-live { background-color: #dcfce3; color: #166534; border: 1px solid #bbf7d0; }
+.env-test { background-color: #fef08a; color: #854d0e; border: 1px solid #fde047; }
+
+/* Mobile adjustment for tables grid */
+@media (max-width: 768px) {
+    .tables-grid {
+        grid-template-columns: 1fr; /* Stacks on mobile */
+    }
+}
     </style>
 </head>
 
@@ -779,13 +870,13 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <i class="fa-solid fa-network-wired logo-icon"></i>
-                <h2>HARSH.ERP</h2>
+                <h2>erp studio</h2>
             </div>
             <ul class="nav-links">
                 <li class="active" data-target="paths-section"><i class="fa-solid fa-route"></i> Navigation Paths</li>
                 <li data-target="sql-section"><i class="fa-solid fa-database"></i> SQL Queries</li>
                 <li data-target="tables-section"><i class="fa-solid fa-table"></i> DB Tables</li>
-                <li data-target="links-section"><i class="fa-solid fa-link"></i> Important Links</li>
+                <li data-target="links-section"><i class="fa-solid fa-link"></i>Doc Type & Series</li>
                 <li data-target="other-section"><i class="fa-solid fa-folder-open"></i> Other Resources</li>
             </ul>
             <div class="user-profile">
@@ -852,7 +943,8 @@
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
                         <h3 class="search-target">Issue Item</h3>
-                        <p class="description search-target">D1SERIES - (Debit Note) | VGRTN - (Delivery Challan Returnable) | VNONR - (Delivery Challan Non Returnable)</p>
+                        <p class="description search-target">D1SERIES - (Debit Note) | VGRTN - (Delivery Challan
+                            Returnable) | VNONR - (Delivery Challan Non Returnable)</p>
 
                         <div id="path-stock-adj" class="dynamic-flow-container"></div>
                     </div>
@@ -860,7 +952,9 @@
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
                         <h3 class="search-target">Consumption | Issue Production | DCR | 43</h3>
-                        <p class="description search-target">M1SERIES - (General Maintenance Order) | M2SERIES - (Breakdown Maintenance Order) | M3SERIES - (Scheduled Maintenance Order) | M4SERIES - (Running With Repair Order) | ISHSD | ISSPR | ISSTR | ISSUE | ISTRD</p>
+                        <p class="description search-target">M1SERIES - (General Maintenance Order) | M2SERIES -
+                            (Breakdown Maintenance Order) | M3SERIES - (Scheduled Maintenance Order) | M4SERIES -
+                            (Running With Repair Order) | ISHSD | ISSPR | ISSTR | ISSUE | ISTRD</p>
 
                         <div id="issue-item" class="dynamic-flow-container"></div>
                     </div>
@@ -940,15 +1034,148 @@
                     <div class="card searchable-item" data-category="Path">
                         <span class="card-tag">Hierarchical Path</span>
                         <h3 class="search-target">PO Amendment</h3>
-                        <p class="description search-target">AMDHI | POAKA | POAMD | POAMT | POFAR | POLG2 | PORTO | POTRD</p>
+                        <p class="description search-target">AMDHI | POAKA | POAMD | POAMT | POFAR | POLG2 | PORTO |
+                            POTRD</p>
 
                         <div id="PO-Amendment" class="dynamic-flow-container"></div>
                     </div>
 
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Approval Flow</h3>
+                        <p class="description search-target">Check users who have approval rights based on document
+                            series</p>
+
+                        <div id="Approval-Flow" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Change User Password</h3>
+                        <p class="description search-target">Lock and Unlock User Accounts | Create New User | Add User
+                        </p>
+
+                        <div id="Change-User-Password" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Bin Create</h3>
+                        <p class="description search-target">Bin Create (Location to store Assets and Items)</p>
+
+                        <div id="Bin-Create" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Add Bin | Tag Bin code to site</h3>
+                        <p class="description search-target">Bin for Asset Code</p>
+
+                        <div id="Bin-Add" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Item Tag | Tag Item to Site</h3>
+                        <p class="description search-target">Tag Code to the Site location</p>
+
+                        <div id="Item-Tag" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Add Employee in Dropdown lists</h3>
+                        <p class="description search-target">Add employee to dropdown lists in PR/PO</p>
+
+                        <div id="Add-Employee" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Stock Report Process</h3>
+                        <p class="description search-target">Generate stock reports for inventory analysis</p>
+
+                        <div id="Stock-Report-Process" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target"> Bin Wise Stock Report</h3>
+                        <p class="description search-target">Generate stock reports for inventory analysis</p>
+
+                        <div id="Bin-Wise-Stock-Report" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Consumption Statement Report</h3>
+                        <p class="description search-target">Generate consumption reports for inventory analysis</p>
+
+                        <div id="Consumption-Report" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Structure</h3>
+                        <p class="description search-target">Structure for ERP</p>
+
+                        <div id="Structure" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Check Pending Approvals</h3>
+                        <p class="description search-target">Check pending approvals for various transactions</p>
+
+                        <div id="Pending-Approvals" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Short Open - (PR/PO)</h3>
+                        <p class="description search-target">Re Open. Short open requests for various transactions</p>
+
+                        <div id="Short-Open" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Short Close - (PR/PO)</h3>
+                        <p class="description search-target">After short close PR appears in Indent status - close
+                            section</p>
+
+                        <div id="Short-Close" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Item Tag/Excel sheet Tag</h3>
+                        <p class="description search-target">Tag items in the system or import tags via Excel sheet</p>
+
+                        <div id="Excel-Tag" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Add Town Code</h3>
+                        <p class="description search-target">Add town codes to items in the system</p>
+
+                        <div id="Town-Code" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Path">
+                        <span class="card-tag">Hierarchical Path</span>
+                        <h3 class="search-target">Add HSN/GST</h3>
+                        <p class="description search-target">Add HSN and GST information to items in the system</p>
+
+                        <div id="HSN-GST" class="dynamic-flow-container"></div>
+                    </div>
+
+
                 </section>
 
 
-            <section id="sql-section" class="content-section">
+                <section id="sql-section" class="content-section">
                     <div class="section-header">
                         <h1>SQL Queries</h1>
                         <p>Frequently used scripts for data extraction and reporting.</p>
@@ -962,7 +1189,8 @@
                             </div>
                             <button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy SQL</button>
                         </div>
-                        <p class="description search-target">Pulls the last 50 item receipts including vendor details.</p>
+                        <p class="description search-target">Pulls the last 50 item receipts including vendor details.
+                        </p>
                         <div class="code-block">
                             <pre><code>SELECT 
     r.Receipt_ID, 
@@ -979,79 +1207,98 @@ LIMIT 50;</code></pre>
                 </section>
 
                 <section id="tables-section" class="content-section">
-                    <div class="section-header">
-                        <h1>Database Tables</h1>
-                        <p>Comprehensive ERP schema directory and data definitions.</p>
-                    </div>
+    <div class="section-header">
+        <h1>Database Tables</h1>
+        <p>Core ERP table structures and definitions.</p>
+        <div class="env-badges">
+            <span class="env-badge env-live"><i class="fa-solid fa-database"></i> Live: VIESL_LIVE</span>
+            <span class="env-badge env-test"><i class="fa-solid fa-vial"></i> Test: TESTDATA</span>
+        </div>
+    </div>
 
-                    <div class="card searchable-item" data-category="Table">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="card-tag">Core Schema</span>
-                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_ItemMaster</h3>
-                            </div>
-                        </div>
-                        <div class="table-description-box">
-                            <strong>Description:</strong>
-                            <p class="search-target">The central repository for all inventory, non-inventory, and fixed asset items. Acts as
-                                the primary source of truth for stock levels and item categorization across all modules.
-                            </p>
+    <div class="tables-grid">
+        
+        <div class="card searchable-item" data-category="Table">
+            <div class="card-header-flex">
+                <div class="table-header-group">
+                    <div>
+                        <span class="card-tag">Indent/PR</span>
+                        <div class="table-name-wrapper">
+                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i>  TRINVS</h3>
+                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="table-description-box">
+                <strong>Description:</strong>
+                <p class="search-target">The central repository for all inventory, non-inventory, and fixed asset items. Acts as the primary source of truth for stock levels and item categorization across all modules.</p>
+            </div>
+        </div>
 
-                    <div class="card searchable-item" data-category="Table">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="card-tag">Transaction Schema</span>
-                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
-                            </div>
-                        </div>
-                        <div class="table-description-box">
-                            <strong>Description:</strong>
-                            <p class="search-target">Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry
-                                numbers, and Warehouse locations to maintain a full audit trail of inventory
-                                procurement.</p>
+        <div class="card searchable-item" data-category="Table">
+            <div class="card-header-flex">
+                <div class="table-header-group">
+                    <div>
+                        <span class="card-tag">Transaction Schema</span>
+                        <div class="table-name-wrapper">
+                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
+                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="table-description-box">
+                <strong>Description:</strong>
+                <p class="search-target">Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry numbers, and Warehouse locations to maintain a full audit trail of inventory procurement.</p>
+            </div>
+        </div>
 
-                    <div class="card searchable-item" data-category="Table">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="card-tag">System Schema</span>
-                                <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
-                            </div>
-                        </div>
-                        <div class="table-description-box">
-                            <strong>Description:</strong>
-                            <p class="search-target">Maintains a historical record of all user actions within the ERP system, including login
-                                timestamps, module access, and data modification entries for security auditing.</p>
+        <div class="card searchable-item" data-category="Table">
+            <div class="card-header-flex">
+                <div class="table-header-group">
+                    <div>
+                        <span class="card-tag">System Schema</span>
+                        <div class="table-name-wrapper">
+                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
+                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+            <div class="table-description-box">
+                <strong>Description:</strong>
+                <p class="search-target">Maintains a historical record of all user actions within the ERP system, including login timestamps, module access, and data modification entries for security auditing.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
 
                 <section id="links-section" class="content-section">
                     <div class="section-header">
-                        <h1>Important Links</h1>
-                        <p>External dashboards and documentation.</p>
+                        <h1>Doc Type & Series</h1>
+                        <p>Series and document types for managing business processes.</p>
                     </div>
 
                     <div class="links-grid">
                         <a href="#" class="link-card searchable-item" data-category="Link">
-                            <i class="fa-solid fa-server link-icon"></i>
+                            <div class="link-number-icon search-target">43</div>
                             <div class="link-info">
-                                <span class="card-tag">External Link</span>
-                                <h3 class="search-target">Production Database Dashboard</h3>
-                                <p class="search-target">Monitor live server health and active connections.</p>
+                                <span class="card-tag">Document Series</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">M1EXW, M2EXW, M3EXW, M4EXW</p>
                             </div>
                         </a>
                         <a href="#" class="link-card searchable-item" data-category="Link">
-                            <i class="fa-solid fa-book link-icon"></i>
+                            <div class="link-number-icon search-target">37</div>
                             <div class="link-info">
-                                <span class="card-tag">External Link</span>
-                                <h3 class="search-target">API Documentation</h3>
-                                <p class="search-target">Endpoints for integrating third-party tools.</p>
+                                <span class="card-tag">Document Series</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">POEXW</p>
                             </div>
                         </a>
+                        
                     </div>
                 </section>
 
@@ -1063,7 +1310,8 @@ LIMIT 50;</code></pre>
                     <div class="card searchable-item" data-category="Other">
                         <span class="card-tag">Config Note</span>
                         <h3 class="search-target">Environment Variables</h3>
-                        <p class="description search-target">Standard connection strings for local C# ASP.NET Core environments.
+                        <p class="description search-target">Standard connection strings for local C# ASP.NET Core
+                            environments.
                             Update your appsettings.json accordingly.</p>
                     </div>
                 </section>
@@ -1207,7 +1455,7 @@ LIMIT 50;</code></pre>
             searchInput.addEventListener('input', (e) => {
                 // Escape special regex characters in the search term to prevent breaking the highlighting
                 const rawTerm = e.target.value.trim();
-                const searchTerm = rawTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
+                const searchTerm = rawTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                 const searchLower = rawTerm.toLowerCase();
 
                 if (searchLower.length > 0) {
@@ -1223,11 +1471,11 @@ LIMIT 50;</code></pre>
                             item.classList.remove('search-hidden');
                             item.closest('.content-section').classList.add('active');
                             matchCount++;
-                            
+
                             // Apply highlights to all text targets within this matched item
                             const targets = item.querySelectorAll('.search-target, .dynamic-node');
                             targets.forEach(target => highlightText(target, searchTerm));
-                            
+
                         } else {
                             item.classList.add('search-hidden');
                             // Remove highlights if hidden
@@ -1262,10 +1510,10 @@ LIMIT 50;</code></pre>
                         nav.classList.add('active');
                     }
                 });
-                
+
                 // Clear all highlights
                 searchTargets.forEach(target => highlightText(target, ''));
-                
+
                 const clearBtn = document.getElementById('search-clear-btn');
                 clearBtn.classList.remove('visible');
             }
@@ -1331,10 +1579,10 @@ LIMIT 50;</code></pre>
                     node.className = 'dynamic-node';
                     if (index === steps.length - 1) node.classList.add('final-node');
                     node.textContent = step;
-                    
+
                     // SAVE ORIGINAL HTML FOR HIGHLIGHTING LATER!
-                    node.dataset.originalHtml = step; 
-                    
+                    node.dataset.originalHtml = step;
+
                     wrapper.appendChild(node);
 
                     if (index < steps.length - 1) {
@@ -1400,13 +1648,79 @@ LIMIT 50;</code></pre>
             const poAmendmentPath = ["Day to Day Transactions", "Purchase + VRM", "Order/Amendment/Schedule", "Amendment", "Single PO"];
             buildDiagonalPath('PO-Amendment', poAmendmentPath);
 
+            const approvalFlowPath = ["Masters+Controls+Configuration", "Admin/MIS", "Authorization(Master + Tranaction)", "Multilevel Conditional", "Transactional Work Flow", "Always"];
+            buildDiagonalPath('Approval-Flow', approvalFlowPath);
+
+            const changeUserPasswordPath = ["Masters+Controls+Configuration", "Admin/MIS", "Role Rights", "Assignment (to users) + View", "User ID & Mod"];
+            buildDiagonalPath('Change-User-Password', changeUserPasswordPath);
+
+            const binCreatePath = ["Masters+Controls+Configuration", "Masters", "Location of Enterprise", "Internal", "Bin (Sub)"];
+            buildDiagonalPath('Bin-Create', binCreatePath);
+
+            const binAddPath = ["Masters+Controls+Configuration", "Masters", "Location of Enterprise", "Internal", "Bin (Sub)", "Select Location -> Add -> Code = Common", "Description = Any", "Asset code = XXXXXXX", "Save"];
+            buildDiagonalPath('Bin-Add', binAddPath);
+
+            const itemTagPath = ["Masters+Controls+Configuration", "Masters", "Item + Fixed Assets", "Item", "Select Group (Item Spare(V), Trading, Power & Fuel)", "Search item code -> Modify -> Add(Location) -> C-Hook -> Quit(Save)"];
+            buildDiagonalPath('Item-Tag', itemTagPath);
+
+            const addEmployeePath = ["Masters+Controls+Configuration", "Masters", "Party", "E-Employee", "EMP Code -> Name -> Address -> Save"];
+            buildDiagonalPath('Add-Employee', addEmployeePath);
+
+            const stockReportProcessPath = ["Reports", "Inventory", "Status/Ledger Reports", "Inventory Status(Period)", "Accepted Quantity (Optimized-Beta Version)", "Summary"];
+            buildDiagonalPath('Stock-Report-Process', stockReportProcessPath);
+
+            const binWiseStockReportPath = ["Reports", "User Defined", "Local", "Bin Wise Quantity & Value", "Summary"];
+            buildDiagonalPath('Bin-Wise-Stock-Report', binWiseStockReportPath);
+
+            const consumptionReportPath = ["Reports", "Inventory", "Other Inv. Reports", "Ccpcwise Consumption Statement", "Intermediate Level", "Div.Level -> (6)", "Asset (Select All/CTRL+A)"];
+            buildDiagonalPath('Consumption-Report', consumptionReportPath);
+
+            const pendingApprovalsPath = ["Overall Drill Down Query", "Audit", "Workflow", "TICK - Transaction Details", "TICK - Specific Doc Types", "Unauthorised", "continue"];
+            buildDiagonalPath('Pending-Approvals', pendingApprovalsPath);
+
+            const shortOpenPath = ["Overall Drill Down Query", "Purchase", "Indent status - open", "All(select)", "Search", "Write->Remark", "save"];
+            buildDiagonalPath('Short-Open', shortOpenPath);
+
+            const shortClosePath = ["Overall Drill Down Query", "Purchase", "Indent status - close", "All(select)", "Search ", "Next Arrow", "Select Line Item", "save"];
+            buildDiagonalPath('Short-Close', shortClosePath);
+
+            const excelTag = ["EID IN/OUT (Excel/xBase/Text)", "EID IN/OUT", "EID In(Excel/xBase/Text)", "Masters/Control", "Item", "Tag Additional Location", "Tag excel file"];
+            buildDiagonalPath('Excel-Tag', excelTag);
+
+            const townCodePath = ["Masters+Controls+Configuration", "Distribution", "Geographical Hierarchy", "Town","Add","save"];
+            buildDiagonalPath('Town-Code', townCodePath);
+
+            const hsnGstPath = ["Masters+Controls+Configuration", "Pur+Sale", "GST/Custom Tariff (HSN/SAC xDate)","Search/Add"];
+            buildDiagonalPath('HSN-GST', hsnGstPath);
+
+
             // Critical fix: Re-capture nodes into searchTargets AFTER JS builds them dynamically
 
+            // --- Copy Table Name to Clipboard ---
+const copyTableBtns = document.querySelectorAll('.copy-table-btn');
+copyTableBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Find the adjacent h3 tag and grab its text (ignoring the icon HTML)
+        const tableNameEl = e.currentTarget.parentElement.querySelector('.table-name-title');
+        const textToCopy = tableNameEl.textContent.trim();
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const icon = btn.querySelector('i');
+            icon.classList.replace('fa-copy', 'fa-check');
+            btn.style.color = 'var(--primary-color)';
+            
+            setTimeout(() => {
+                icon.classList.replace('fa-check', 'fa-copy');
+                btn.style.color = '';
+            }, 1500);
+        });
+    });
+});
 
 
 
             document.querySelectorAll('.dynamic-node').forEach(node => {
-                if(!node.dataset.originalHtml) {
+                if (!node.dataset.originalHtml) {
                     node.dataset.originalHtml = node.innerHTML;
                 }
             });
