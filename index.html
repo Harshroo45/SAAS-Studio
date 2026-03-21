@@ -367,8 +367,8 @@
                                     <pre><code class="sql-code"><span class="kw">SELECT</span> 
     POST_FLAG, *
 <span class="kw">FROM</span> <span class="fn">TRINVS</span>
-<span class="kw">WHERE</span> <span class="fn">DOC_NO</span> = <span class="var">'-----------------'</span>
-<span class="kw">ORDER BY</span> ID_KEY <span class="kw">;</span>
+<span class="kw">WHERE</span> <span class="fn">DOC_NO</span> = <span class="var">'9999999999'</span>
+<span class="kw">ORDER BY</span> ID_KEY <span class="kw"></span>
 </code></pre>
                                 </div>
                             </div>
@@ -397,7 +397,7 @@
 
 <span class="kw">UPDATE</span> <span class="fn">TRINVS</span>
 <span class="kw">SET</span> COLUMN_NAME = <span class="var">VALUE</span>,
-<span class="kw">WHERE</span> ID_KEY = <span class="str">'-----------------'</span>;
+<span class="kw">WHERE</span> ID_KEY = <span class="str">'9999999999'</span>
 
 <span class="cm">COMMIT TRAN;</span></code></pre>
                                 </div>
@@ -424,8 +424,8 @@
                                 </div>
                                 <div class="code-block">
                                     <pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">TRINVS</span>
-<span class="kw">WHERE</span> DOC_NO = <span class="var">'-----------------'</span>
-<span class="kw">AND</span> ID_KEY = <span class="str">'-----------------'</span>;</code></pre>
+<span class="kw">WHERE</span> DOC_NO = <span class="var">'9999999999'</span>
+<span class="kw">AND</span> ID_KEY = <span class="str">'9999999999'</span></code></pre>
                                 </div>
                             </div>
                         </div>
