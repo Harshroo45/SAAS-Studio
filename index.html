@@ -1256,79 +1256,94 @@
         }
 
         /* --- Dynamic Color Theme Variables --- */
-[data-color="indigo"] {
-    --primary-color: #4f46e5;
-    --primary-hover: #4338ca;
-    --theme-glow: rgba(79, 70, 229, 0.15);
-}
-[data-color="ocean"] {
-    --primary-color: #0ea5e9;
-    --primary-hover: #0284c7;
-    --theme-glow: rgba(14, 165, 233, 0.15);
-}
-[data-color="emerald"] {
-    --primary-color: #10b981;
-    --primary-hover: #059669;
-    --theme-glow: rgba(16, 185, 129, 0.15);
-}
-[data-color="sunset"] {
-    --primary-color: #f97316;
-    --primary-hover: #ea580c;
-    --theme-glow: rgba(249, 115, 22, 0.15);
-}
+        [data-color="indigo"] {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --theme-glow: rgba(79, 70, 229, 0.15);
+        }
 
-/* --- Theme Color Picker UI --- */
-.theme-picker { 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
-}
+        [data-color="ocean"] {
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+            --theme-glow: rgba(14, 165, 233, 0.15);
+        }
 
-.theme-dot { 
-    width: 16px; 
-    height: 16px; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    transition: transform 0.2s, box-shadow 0.2s; 
-    border: 2px solid transparent; 
-}
+        [data-color="emerald"] {
+            --primary-color: #10b981;
+            --primary-hover: #059669;
+            --theme-glow: rgba(16, 185, 129, 0.15);
+        }
 
-.theme-dot:hover { 
-    transform: scale(1.2); 
-}
+        [data-color="sunset"] {
+            --primary-color: #f97316;
+            --primary-hover: #ea580c;
+            --theme-glow: rgba(249, 115, 22, 0.15);
+        }
 
-.theme-dot.active { 
-    border-color: var(--text-primary); 
-    transform: scale(1.1); 
-    box-shadow: 0 0 0 2px var(--bg-main); 
-}
+        /* --- Theme Color Picker UI --- */
+        .theme-picker {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-/* Gradient Colors for the Dots */
-.dot-indigo { background: linear-gradient(135deg, #4f46e5, #818cf8); }
-.dot-ocean { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
-.dot-emerald { background: linear-gradient(135deg, #10b981, #34d399); }
-.dot-sunset { background: linear-gradient(135deg, #f97316, #fb923c); }
+        .theme-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid transparent;
+        }
 
-/* Hide on mobile to save space */
-@media (max-width: 768px) {
-    /* Keep the theme picker visible on mobile */
-    .theme-picker { 
-        display: flex; 
-        gap: 6px; 
-        padding-left: 8px; 
-    }
-    
-    /* Make the dots slightly smaller for phone screens */
-    .theme-dot {
-        width: 14px;
-        height: 14px;
-    }
+        .theme-dot:hover {
+            transform: scale(1.2);
+        }
 
-    /* Hide the clock text (keep only the icon) on mobile to make room for the colors */
-    .datetime-display span {
-        display: none;
-    }
-}
+        .theme-dot.active {
+            border-color: var(--text-primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 0 2px var(--bg-main);
+        }
+
+        /* Gradient Colors for the Dots */
+        .dot-indigo {
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+        }
+
+        .dot-ocean {
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+        }
+
+        .dot-emerald {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+
+        .dot-sunset {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+        }
+
+        /* Hide on mobile to save space */
+        @media (max-width: 768px) {
+
+            /* Keep the theme picker visible on mobile */
+            .theme-picker {
+                display: flex;
+                gap: 6px;
+                padding-left: 8px;
+            }
+
+            /* Make the dots slightly smaller for phone screens */
+            .theme-dot {
+                width: 14px;
+                height: 14px;
+            }
+
+            /* Hide the clock text (keep only the icon) on mobile to make room for the colors */
+            .datetime-display span {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -1364,43 +1379,43 @@
         <main class="main-content">
 
             <header class="top-header">
-    <div class="top-controls">
-        <div class="mobile-menu-btn" id="mobile-menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+                <div class="top-controls">
+                    <div class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
 
-        <div class="controls-right">
-            <div class="datetime-display" id="clock-display">
-                <i class="fa-regular fa-clock"></i>
-                <span>Loading time...</span>
-            </div>
-            
-            <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
-            
-            <div class="theme-picker" id="theme-picker">
-    <span class="theme-dot dot-indigo" data-color="indigo" title="Indigo"></span>
-    <span class="theme-dot dot-ocean" data-color="ocean" title="Ocean"></span>
-    <span class="theme-dot dot-emerald active" data-color="emerald" title="Emerald"></span>
-    <span class="theme-dot dot-sunset" data-color="sunset" title="Sunset"></span>
-</div>
+                    <div class="controls-right">
+                        <div class="datetime-display" id="clock-display">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>Loading time...</span>
+                        </div>
 
-            <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
+                        <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
 
-            <button class="theme-toggle" id="theme-btn" title="Toggle Dark Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-    </div>
+                        <div class="theme-picker" id="theme-picker">
+                            <span class="theme-dot dot-indigo" data-color="indigo" title="Indigo"></span>
+                            <span class="theme-dot dot-ocean" data-color="ocean" title="Ocean"></span>
+                            <span class="theme-dot dot-emerald active" data-color="emerald" title="Emerald"></span>
+                            <span class="theme-dot dot-sunset" data-color="sunset" title="Sunset"></span>
+                        </div>
 
-    <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
-        <button class="search-clear-btn" id="search-clear-btn" title="Clear search">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="search-shortcut">Ctrl + /</div>
-    </div>
-</header>
+                        <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
+
+                        <button class="theme-toggle" id="theme-btn" title="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
+                    <button class="search-clear-btn" id="search-clear-btn" title="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div class="search-shortcut">Ctrl + /</div>
+                </div>
+            </header>
 
             <div class="content-wrapper" id="main-scroll-area">
 
@@ -2463,34 +2478,34 @@
         });
 
         // --- Theme Color Picker Logic ---
-const htmlEl = document.documentElement;
-const themeDots = document.querySelectorAll('.theme-dot');
+        const htmlEl = document.documentElement;
+        const themeDots = document.querySelectorAll('.theme-dot');
 
-// 1. Check local storage for a saved color, default to 'indigo'
-const savedColor = localStorage.getItem('erp-color') || 'indigo';
-htmlEl.setAttribute('data-color', savedColor);
+        // 1. Check local storage for a saved color, default to 'indigo'
+        const savedColor = localStorage.getItem('erp-color') || 'emerald';
+        htmlEl.setAttribute('data-color', savedColor);
 
-// 2. Setup the dots
-themeDots.forEach(dot => {
-    // Make the saved color's dot "active" on load
-    if(dot.getAttribute('data-color') === savedColor) {
-        dot.classList.add('active');
-    }
-    
-    // Listen for clicks on the dots
-    dot.addEventListener('click', (e) => {
-        // Remove 'active' ring from all dots
-        themeDots.forEach(d => d.classList.remove('active'));
-        
-        // Add 'active' ring to the clicked dot
-        e.target.classList.add('active');
-        
-        // Change the theme color and save it to the browser
-        const color = e.target.getAttribute('data-color');
-        htmlEl.setAttribute('data-color', color);
-        localStorage.setItem('erp-color', color);
-    });
-});
+        // 2. Setup the dots
+        themeDots.forEach(dot => {
+            // Make the saved color's dot "active" on load
+            if (dot.getAttribute('data-color') === savedColor) {
+                dot.classList.add('active');
+            }
+
+            // Listen for clicks on the dots
+            dot.addEventListener('click', (e) => {
+                // Remove 'active' ring from all dots
+                themeDots.forEach(d => d.classList.remove('active'));
+
+                // Add 'active' ring to the clicked dot
+                e.target.classList.add('active');
+
+                // Change the theme color and save it to the browser
+                const color = e.target.getAttribute('data-color');
+                htmlEl.setAttribute('data-color', color);
+                localStorage.setItem('erp-color', color);
+            });
+        });
     </script>
 </body>
 
