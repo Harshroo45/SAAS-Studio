@@ -1256,28 +1256,54 @@
         }
 
         /* --- Dynamic Color Theme Variables --- */
+        
+        /* 1. Corporate Teal (Kept class name as 'indigo' so your HTML/JS doesn't break) */
         [data-color="indigo"] {
-            --primary-color: #4f46e5;
-            --primary-hover: #4338ca;
-            --theme-glow: rgba(79, 70, 229, 0.15);
+            --primary-color: #ff00a6;
+            --primary-hover: #ff00a6; /* Perfectly calculated darker teal for hover */
+            --theme-glow: rgba(10, 101, 118, 0.2); /* Matched teal glow */
         }
 
+        /* 2. Ocean Blue */
         [data-color="ocean"] {
             --primary-color: #0ea5e9;
             --primary-hover: #0284c7;
-            --theme-glow: rgba(14, 165, 233, 0.15);
+            --theme-glow: rgba(14, 165, 233, 0.2);
         }
 
+        /* 3. Emerald Green */
         [data-color="emerald"] {
             --primary-color: #10b981;
             --primary-hover: #059669;
-            --theme-glow: rgba(16, 185, 129, 0.15);
+            --theme-glow: rgba(16, 185, 129, 0.2);
         }
 
+        /* 4. Sunset Orange */
         [data-color="sunset"] {
             --primary-color: #f97316;
             --primary-hover: #ea580c;
-            --theme-glow: rgba(249, 115, 22, 0.15);
+            --theme-glow: rgba(249, 115, 22, 0.2);
+        }
+
+        /* --- Premium 3-Stop Gradient Colors for the Dots --- */
+        .dot-indigo {
+            /* Beautiful teal gradient shifting from dark to light */
+            background: linear-gradient(135deg, #ff00a6, #ff00a6, #1693a8);
+        }
+
+        .dot-ocean {
+            /* Deep blue to bright sky blue */
+            background: linear-gradient(135deg, #0284c7, #0ea5e9, #38bdf8);
+        }
+
+        .dot-emerald {
+            /* Rich forest green to bright emerald */
+            background: linear-gradient(135deg, #059669, #10b981, #34d399);
+        }
+
+        .dot-sunset {
+            /* Deep burnt orange to bright sunset orange */
+            background: linear-gradient(135deg, #ea580c, #f97316, #fb923c);
         }
 
         /* --- Theme Color Picker UI --- */
@@ -1306,23 +1332,7 @@
             box-shadow: 0 0 0 2px var(--bg-main);
         }
 
-        /* Gradient Colors for the Dots */
-        .dot-indigo {
-            background: linear-gradient(135deg, #4f46e5, #818cf8);
-        }
-
-        .dot-ocean {
-            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-        }
-
-        .dot-emerald {
-            background: linear-gradient(135deg, #10b981, #34d399);
-        }
-
-        .dot-sunset {
-            background: linear-gradient(135deg, #f97316, #fb923c);
-        }
-
+        
         /* Hide on mobile to save space */
         @media (max-width: 768px) {
 
@@ -2027,24 +2037,238 @@
                 <section id="links-section" class="content-section">
                     <div class="section-header">
                         <h1>Doc Type & Series</h1>
-                        <p>Series and document types for managing business processes.</p>
+                        <p>Complete directory of document types and their associated transaction series.</p>
                     </div>
 
                     <div class="links-grid">
+
                         <a href="#" class="link-card searchable-item" data-category="Link">
-                            <div class="link-number-icon search-target">43</div>
+                            <div class="link-number-icon search-target">12</div>
                             <div class="link-info">
-                                <span class="card-tag">Document Series</span>
+                                <span class="card-tag">Bank Receipts</span>
                                 <h3 class="search-target">Related Documents</h3>
-                                <p class="search-target">M1EXW, M2EXW, M3EXW, M4EXW</p>
+                                <p class="search-target">BKR01, BKR02, BKR03, BKR04, BKR05, BKR06, BKR07, BKR08, BKR09,
+                                    BKR10, BKR11, BKR12, BKR13, BKR14, BKR15, BKR16, BKR17, BKR18, BKR19</p>
                             </div>
                         </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">15</div>
+                            <div class="link-info">
+                                <span class="card-tag">Cash Receipts</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">CASHO, CASHY</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">16</div>
+                            <div class="link-info">
+                                <span class="card-tag">Bank Payments</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">BKP01, BKP02, BKP03, BKP04, BKP05, BKP06, BKP07, BKP08, BKP09,
+                                    BKP10, BKP11, BKP12, BKP13, BKP14, BKP15, BKP16, BKP17, BKP18, BKP19</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">22</div>
+                            <div class="link-info">
+                                <span class="card-tag">Expense Booking</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">EXB01, EXB02, EXCAP</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">23</div>
+                            <div class="link-info">
+                                <span class="card-tag">Purchase Bill Passing</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">PBAST, PBP01, PBP02, PBP03, PBP04</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">24</div>
+                            <div class="link-info">
+                                <span class="card-tag">Debit Notes & Billing</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">DEBIT (24), BLBIL (2A)</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">30</div>
+                            <div class="link-info">
+                                <span class="card-tag">Goods Receipt (GRN)</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">GRIMP, GRNAD, GRNCP, GRNRW, GRNSP, GRNSR, GRNTD, GRRTO, RCMRG,
+                                    UNRCM</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">31</div>
+                            <div class="link-info">
+                                <span class="card-tag">Returns</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">REDCR</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">32</div>
+                            <div class="link-info">
+                                <span class="card-tag">Delivery Challan / Transfer</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">DCAST, DCBIN, DCMTM, T0001, T0002, TOO03, TTOFX</p>
+                            </div>
+                        </a>
+
                         <a href="#" class="link-card searchable-item" data-category="Link">
                             <div class="link-number-icon search-target">37</div>
                             <div class="link-info">
-                                <span class="card-tag">Document Series</span>
+                                <span class="card-tag">Purchase Orders (PO)</span>
                                 <h3 class="search-target">Related Documents</h3>
-                                <p class="search-target">POEXW</p>
+                                <p class="search-target">CCTPO, PDCAP, POCON, POCRU, POEXW, POFOC, POGEN, POHIR, POHSD,
+                                    POIMP, POLOG, POMIL, POOTH, POPAV, POPCH, POROL, PORTO, POSCH (37 & 38), POSTR,
+                                    POTRD, POTRS, SOCON, SOCRU, SOEXW, SOGEN, SOMIL, SOPAV, SOROL, SOTRD, SUBWO, TRDPO
+                                </p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">3E</div>
+                            <div class="link-info">
+                                <span class="card-tag">Purchase Requisition (PR)</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">PRCON, PRCRU, PREXW, PRGEN, PRHIR, PRLOG, PRMIL, PROTH, PRPAV,
+                                    PRROL, PRSTR, PRTRD</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">3P</div>
+                            <div class="link-info">
+                                <span class="card-tag">Gate Entry</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">CONG1, CRUG1, EXWG1, GATE1, GENG1, MILG1, PAVG1, ROLG1</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">41</div>
+                            <div class="link-info">
+                                <span class="card-tag">Issues & Returns</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">D1ADM, D1CON, D1CRU, D1EXW, D1GEN, D1MIL, D1PAV, VGRTN, VNONR
+                                </p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">42</div>
+                            <div class="link-info">
+                                <span class="card-tag">Transfers / DC (Outward)</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">DCAST, DCBIN, DCMTM, T0001, T0002, TOO03, TTOFX</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">43</div>
+                            <div class="link-info">
+                                <span class="card-tag">Production Consumption</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">ADMIS, ISHSD, ISSPR, ISSTR, ISSUE, ISTRD, M1CON, M1CRU, M1EXW,
+                                    M1GEN, M1MIL, M1PAV, M1ROL, M2CON, M2CRU, M2EXW, M2GEN, M2MIL, M2PAV, M2ROL, M3CON,
+                                    M3CRU, M3EXW, M3GEN, M3MIL, M3PAV, M3ROL, M4CON, M4CRU, M4EXW, M4GEN, M4MIL, M4PAV,
+                                    M4ROL</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">46</div>
+                            <div class="link-info">
+                                <span class="card-tag">Other Transactions</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">27DTR, 27ERT, 27ETG, 27OTH, 27REN, 29OTH, 29REN</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">47</div>
+                            <div class="link-info">
+                                <span class="card-tag">RCM / Debit Notes</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">ADNR1, ADNS1, DEBIT, RCM01, RCM02, RCM03, RCM04</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">49</div>
+                            <div class="link-info">
+                                <span class="card-tag">Work Orders (WO)</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">SOOTH, SOSCH, WOCON, WOCRU, WOCUT, WORE1, WOREN, WOTRD, WOTRE
+                                </p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">4B</div>
+                            <div class="link-info">
+                                <span class="card-tag">Fixed Assets & Scrap</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">FA002, FACAP, FAITM, MTMTS, PM04B, SCRPC, TTOFC</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">66</div>
+                            <div class="link-info">
+                                <span class="card-tag">Breakdown & Inspection</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">BDCRU, BDEXR, BDGEN, BDMIL, BDPAV, BDROL, COMDE, HINSP, RWCRP
+                                </p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">9C</div>
+                            <div class="link-info">
+                                <span class="card-tag">Job & Service Masters</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">JOBCD, SMCON, SMCRU, SMEXW, SMGEN, SMMIL, SMPAV, SMROL</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">PM</div>
+                            <div class="link-info">
+                                <span class="card-tag">PO Amendments</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">AMDHI, HIRAM, POAKA, POAMD, POAMI, POAMT, POFAR, POLG1, POLG2,
+                                    PORTO, POTRD</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">PT</div>
+                            <div class="link-info">
+                                <span class="card-tag">Log Sheets</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">LSCON, LSCRU, LSEXW, LSGEN, LSMIL, LSPAV, LSROL</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="link-card searchable-item" data-category="Link">
+                            <div class="link-number-icon search-target">SM</div>
+                            <div class="link-info">
+                                <span class="card-tag">SO Amendments</span>
+                                <h3 class="search-target">Related Documents</h3>
+                                <p class="search-target">AMCRU, CRUIM, SOAKA, SOAMA, SOAMD, SOCRU</p>
                             </div>
                         </a>
 
@@ -2054,14 +2278,58 @@
                 <section id="other-section" class="content-section">
                     <div class="section-header">
                         <h1>Other Resources</h1>
-                        <p>Miscellaneous notes and configurations.</p>
+                        <p>Miscellaneous notes, system portals, and configurations.</p>
                     </div>
+
+                    <h3 style="margin-bottom: 16px; font-size: 18px; color: var(--text-primary);">System Portals & Docs
+                    </h3>
+                    <div class="links-grid" style="margin-bottom: 32px;">
+
+                        <a href="https://vision.ieverp.com:8443/ERP/WEB/#/" target="_blank"
+                            class="link-card searchable-item" data-category="Other">
+                            <div class="link-number-icon search-target">WE</div>
+                            <div class="link-info">
+                                <span class="card-tag">Live System</span>
+                                <h3 class="search-target">.NET WEB ERP</h3>
+                                <p class="search-target">Access the current, live Web-based ERP system for day-to-day
+                                    operations and live data.</p>
+                            </div>
+                        </a>
+
+                        <a href="http://vision.ieverp.com/" target="_blank" class="link-card searchable-item"
+                            data-category="Other">
+                            <div class="link-number-icon search-target">OE</div>
+                            <div class="link-info">
+                                <span class="card-tag">Legacy System</span>
+                                <h3 class="search-target">OLD ERP</h3>
+                                <p class="search-target">Access the previous desktop/legacy ERP system for historical
+                                    data and past audits.</p>
+                            </div>
+                        </a>
+
+                        <a href="https://dotnet-web-erp.vercel.app/" target="_blank" class="link-card searchable-item"
+                            data-category="Other">
+                            <div class="link-number-icon search-target">
+                                <i class="fa-solid fa-book-open" style="font-size: 22px;"></i>
+                            </div>
+                            <div class="link-info">
+                                <span class="card-tag">Documentation</span>
+                                <h3 class="search-target">ERP GUIDE SOP</h3>
+                                <p class="search-target">Official Standard Operating Procedures (SOP) and user manuals
+                                    for all ERP modules.</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <h3 style="margin-bottom: 16px; font-size: 18px; color: var(--text-primary);">Developer
+                        Configurations</h3>
                     <div class="card searchable-item" data-category="Other">
                         <span class="card-tag">Config Note</span>
                         <h3 class="search-target">Environment Variables</h3>
-                        <p class="description search-target">Standard connection strings for local C# ASP.NET Core
-                            environments.
-                            Update your appsettings.json accordingly.</p>
+                        <p class="description search-target" style="margin-bottom: 0;">Standard connection strings for
+                            local C# ASP.NET Core environments. Update your <strong>appsettings.json</strong>
+                            accordingly when switching between VIESL_LIVE and TESTDATA.</p>
                     </div>
                 </section>
 
