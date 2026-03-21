@@ -1235,6 +1235,25 @@
 
             /* Slightly smaller font for phones */
         }
+
+        /* --- Welcome Message --- */
+.welcome-header { 
+    margin-bottom: 4px; 
+}
+
+.welcome-text { 
+    font-size: 28px; 
+    font-weight: 800; 
+    color: var(--text-primary); 
+    letter-spacing: -0.5px; 
+}
+
+/* Mobile adjustment for welcome text */
+@media (max-width: 768px) {
+    .welcome-text { 
+        font-size: 24px; 
+    }
+}
     </style>
 </head>
 
@@ -1270,31 +1289,30 @@
         <main class="main-content">
 
             <header class="top-header">
-                <div class="top-controls">
-                    <div class="mobile-menu-btn" id="mobile-menu-btn">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
+    <div class="top-controls">
+        <div class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
 
-                    <div class="controls-right">
-                        <div class="datetime-display" id="clock-display">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>Loading time...</span>
-                        </div>
-                        <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
-                        <button class="theme-toggle" id="theme-btn" title="Toggle Dark Mode">
-                            <i class="fa-solid fa-moon"></i>
-                        </button>
-                    </div>
-                </div>
+        <div class="controls-right">
+            <div class="datetime-display" id="clock-display">
+                <i class="fa-regular fa-clock"></i>
+                <span>Loading time...</span>
+            </div>
+            <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
+            <button class="theme-toggle" id="theme-btn" title="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </div>
 
-                <div class="search-container">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
-                    <button class="search-clear-btn" id="search-clear-btn" title="Clear search"><i
-                            class="fa-solid fa-xmark"></i></button>
-                    <div class="search-shortcut">Ctrl + /</div>
-                </div>
-            </header>
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
+        <button class="search-clear-btn" id="search-clear-btn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-shortcut">Ctrl + /</div>
+    </div>
+</header>
 
             <div class="content-wrapper" id="main-scroll-area">
 
@@ -1568,7 +1586,7 @@
                 </div>
                 <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
             </div>
-            <p class="description search-target">Pulls the last 50 item receipts including vendor details.</p>
+            <p class="description search-target">Use this query to fetch the data in tables.</p>
             
             <div class="ide-container">
                 <div class="ide-header">
@@ -1577,15 +1595,11 @@
                 </div>
                 <div class="code-block">
 <pre><code class="sql-code"><span class="kw">SELECT</span> 
-    r.Receipt_ID, 
-    r.Item_Code, 
-    i.Item_Name, 
-    r.Quantity, 
-    r.Receipt_Date
-<span class="kw">FROM</span> <span class="fn">tbl_Receipts</span> r
-<span class="kw">JOIN</span> <span class="fn">tbl_ItemMaster</span> i <span class="kw">ON</span> r.Item_Code = i.Item_Code
-<span class="kw">ORDER BY</span> r.Receipt_Date <span class="kw">DESC</span>
-<span class="kw">LIMIT</span> <span class="num">50</span>;</code></pre>
+    POST_FLAG, *
+<span class="kw">FROM</span> <span class="fn">TRINVS</span>
+<span class="kw">WHERE</span> <span class="fn">DOC_NO</span> = <span class="var">'-----------------'</span>
+<span class="kw">ORDER BY</span> ID_KEY <span class="kw">;</span>
+</code></pre>
                 </div>
             </div>
         </div>
@@ -1608,12 +1622,11 @@
                 <div class="code-block">
 <pre><code class="sql-code"><span class="kw">BEGIN TRAN</span>;
 
-<span class="kw">UPDATE</span> <span class="fn">tbl_ItemMaster</span>
-<span class="kw">SET</span> Current_Stock = <span class="var">@CorrectValue</span>,
-    Last_Modified = <span class="kw">GETDATE</span>()
-<span class="kw">WHERE</span> Item_Code = <span class="str">'ITM-10024'</span>;
+<span class="kw">UPDATE</span> <span class="fn">TRINVS</span>
+<span class="kw">SET</span> COLUMN_NAME = <span class="var">VALUE</span>,
+<span class="kw">WHERE</span> ID_KEY = <span class="str">'-----------------'</span>;
 
-<span class="cm">-- COMMIT TRAN; -- Uncomment after verification</span></code></pre>
+<span class="cm">COMMIT TRAN;</span></code></pre>
                 </div>
             </div>
         </div>
@@ -1624,7 +1637,7 @@
                     <span class="card-tag">DML - Delete</span>
                     <h3 class="search-target">Remove Stalled Gate Entry</h3>
                 </div>
-                <span class="risk-badge risk-danger"><i class="fa-solid fa-skull-crossbones"></i> High Risk</span>
+                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i> Risk</span>
             </div>
             <p class="description search-target">Deletes an abandoned gate entry. Fails if foreign keys exist in POs.</p>
             
@@ -1634,9 +1647,9 @@
                     <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
                 </div>
                 <div class="code-block">
-<pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">tbl_GateEntry</span>
-<span class="kw">WHERE</span> Entry_ID = <span class="var">@GateID</span>
-<span class="kw">AND</span> Status = <span class="str">'STALLED'</span>;</code></pre>
+<pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">TRINVS</span>
+<span class="kw">WHERE</span> DOC_NO = <span class="var">'-----------------'</span>
+<span class="kw">AND</span> ID_KEY = <span class="str">'-----------------'</span>;</code></pre>
                 </div>
             </div>
         </div>
