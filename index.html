@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-color="emerald">
 
 <head>
     <meta charset="UTF-8">
@@ -1237,21 +1237,96 @@
         }
 
         /* --- Welcome Message --- */
-.welcome-header { 
-    margin-bottom: 4px; 
+        .welcome-header {
+            margin-bottom: 4px;
+        }
+
+        .welcome-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        /* Mobile adjustment for welcome text */
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 24px;
+            }
+        }
+
+        /* --- Dynamic Color Theme Variables --- */
+[data-color="indigo"] {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --theme-glow: rgba(79, 70, 229, 0.15);
+}
+[data-color="ocean"] {
+    --primary-color: #0ea5e9;
+    --primary-hover: #0284c7;
+    --theme-glow: rgba(14, 165, 233, 0.15);
+}
+[data-color="emerald"] {
+    --primary-color: #10b981;
+    --primary-hover: #059669;
+    --theme-glow: rgba(16, 185, 129, 0.15);
+}
+[data-color="sunset"] {
+    --primary-color: #f97316;
+    --primary-hover: #ea580c;
+    --theme-glow: rgba(249, 115, 22, 0.15);
 }
 
-.welcome-text { 
-    font-size: 28px; 
-    font-weight: 800; 
-    color: var(--text-primary); 
-    letter-spacing: -0.5px; 
+/* --- Theme Color Picker UI --- */
+.theme-picker { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
 }
 
-/* Mobile adjustment for welcome text */
+.theme-dot { 
+    width: 16px; 
+    height: 16px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.2s; 
+    border: 2px solid transparent; 
+}
+
+.theme-dot:hover { 
+    transform: scale(1.2); 
+}
+
+.theme-dot.active { 
+    border-color: var(--text-primary); 
+    transform: scale(1.1); 
+    box-shadow: 0 0 0 2px var(--bg-main); 
+}
+
+/* Gradient Colors for the Dots */
+.dot-indigo { background: linear-gradient(135deg, #4f46e5, #818cf8); }
+.dot-ocean { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+.dot-emerald { background: linear-gradient(135deg, #10b981, #34d399); }
+.dot-sunset { background: linear-gradient(135deg, #f97316, #fb923c); }
+
+/* Hide on mobile to save space */
 @media (max-width: 768px) {
-    .welcome-text { 
-        font-size: 24px; 
+    /* Keep the theme picker visible on mobile */
+    .theme-picker { 
+        display: flex; 
+        gap: 6px; 
+        padding-left: 8px; 
+    }
+    
+    /* Make the dots slightly smaller for phone screens */
+    .theme-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Hide the clock text (keep only the icon) on mobile to make room for the colors */
+    .datetime-display span {
+        display: none;
     }
 }
     </style>
@@ -1299,7 +1374,18 @@
                 <i class="fa-regular fa-clock"></i>
                 <span>Loading time...</span>
             </div>
+            
             <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
+            
+            <div class="theme-picker" id="theme-picker">
+    <span class="theme-dot dot-indigo" data-color="indigo" title="Indigo"></span>
+    <span class="theme-dot dot-ocean" data-color="ocean" title="Ocean"></span>
+    <span class="theme-dot dot-emerald active" data-color="emerald" title="Emerald"></span>
+    <span class="theme-dot dot-sunset" data-color="sunset" title="Sunset"></span>
+</div>
+
+            <div style="width: 1px; height: 20px; background-color: var(--border-color);"></div>
+
             <button class="theme-toggle" id="theme-btn" title="Toggle Dark Mode">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -1309,7 +1395,9 @@
     <div class="search-container">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" id="universal-search" placeholder="Global search..." autocomplete="off">
-        <button class="search-clear-btn" id="search-clear-btn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+        <button class="search-clear-btn" id="search-clear-btn" title="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
         <div class="search-shortcut">Ctrl + /</div>
     </div>
 </header>
@@ -1571,91 +1659,98 @@
 
 
                 <section id="sql-section" class="content-section">
-    <div class="section-header">
-        <h1>SQL Query Library</h1>
-        <p>Essential CRUD operations, data extraction, and database modifications.</p>
-    </div>
+                    <div class="section-header">
+                        <h1>SQL Query Library</h1>
+                        <p>Essential CRUD operations, data extraction, and database modifications.</p>
+                    </div>
 
-    <div class="grid-container">
+                    <div class="grid-container">
 
-        <div class="card searchable-item" data-category="SQL">
-            <div class="card-header-flex">
-                <div>
-                    <span class="card-tag">DML - Read</span>
-                    <h3 class="search-target">Get Latest Inventory Receipts</h3>
-                </div>
-                <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
-            </div>
-            <p class="description search-target">Use this query to fetch the data in tables.</p>
-            
-            <div class="ide-container">
-                <div class="ide-header">
-                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
-                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
-                </div>
-                <div class="code-block">
-<pre><code class="sql-code"><span class="kw">SELECT</span> 
+                        <div class="card searchable-item" data-category="SQL">
+                            <div class="card-header-flex">
+                                <div>
+                                    <span class="card-tag">DML - Read</span>
+                                    <h3 class="search-target">Get Latest Inventory Receipts</h3>
+                                </div>
+                                <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
+                            </div>
+                            <p class="description search-target">Use this query to fetch the data in tables.</p>
+
+                            <div class="ide-container">
+                                <div class="ide-header">
+                                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i>
+                                        Copy</button>
+                                </div>
+                                <div class="code-block">
+                                    <pre><code class="sql-code"><span class="kw">SELECT</span> 
     POST_FLAG, *
 <span class="kw">FROM</span> <span class="fn">TRINVS</span>
 <span class="kw">WHERE</span> <span class="fn">DOC_NO</span> = <span class="var">'-----------------'</span>
 <span class="kw">ORDER BY</span> ID_KEY <span class="kw">;</span>
 </code></pre>
-                </div>
-            </div>
-        </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="card searchable-item" data-category="SQL">
-            <div class="card-header-flex">
-                <div>
-                    <span class="card-tag">DML - Update</span>
-                    <h3 class="search-target">Correct Stock Quantity</h3>
-                </div>
-                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i> Caution</span>
-            </div>
-            <p class="description search-target">Manually overrides the stock level. Always ensure WHERE clause is active.</p>
-            
-            <div class="ide-container">
-                <div class="ide-header">
-                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
-                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
-                </div>
-                <div class="code-block">
-<pre><code class="sql-code"><span class="kw">BEGIN TRAN</span>;
+                        <div class="card searchable-item" data-category="SQL">
+                            <div class="card-header-flex">
+                                <div>
+                                    <span class="card-tag">DML - Update</span>
+                                    <h3 class="search-target">Correct Stock Quantity</h3>
+                                </div>
+                                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i>
+                                    Caution</span>
+                            </div>
+                            <p class="description search-target">Manually overrides the stock level. Always ensure WHERE
+                                clause is active.</p>
+
+                            <div class="ide-container">
+                                <div class="ide-header">
+                                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i>
+                                        Copy</button>
+                                </div>
+                                <div class="code-block">
+                                    <pre><code class="sql-code"><span class="kw">BEGIN TRAN</span>;
 
 <span class="kw">UPDATE</span> <span class="fn">TRINVS</span>
 <span class="kw">SET</span> COLUMN_NAME = <span class="var">VALUE</span>,
 <span class="kw">WHERE</span> ID_KEY = <span class="str">'-----------------'</span>;
 
 <span class="cm">COMMIT TRAN;</span></code></pre>
-                </div>
-            </div>
-        </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="card searchable-item" data-category="SQL">
-            <div class="card-header-flex">
-                <div>
-                    <span class="card-tag">DML - Delete</span>
-                    <h3 class="search-target">Remove Stalled Gate Entry</h3>
-                </div>
-                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i> Risk</span>
-            </div>
-            <p class="description search-target">Deletes an abandoned gate entry. Fails if foreign keys exist in POs.</p>
-            
-            <div class="ide-container">
-                <div class="ide-header">
-                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
-                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
-                </div>
-                <div class="code-block">
-<pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">TRINVS</span>
+                        <div class="card searchable-item" data-category="SQL">
+                            <div class="card-header-flex">
+                                <div>
+                                    <span class="card-tag">DML - Delete</span>
+                                    <h3 class="search-target">Remove Stalled Gate Entry</h3>
+                                </div>
+                                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i>
+                                    Risk</span>
+                            </div>
+                            <p class="description search-target">Deletes an abandoned gate entry. Fails if foreign keys
+                                exist in POs.</p>
+
+                            <div class="ide-container">
+                                <div class="ide-header">
+                                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i>
+                                        Copy</button>
+                                </div>
+                                <div class="code-block">
+                                    <pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">TRINVS</span>
 <span class="kw">WHERE</span> DOC_NO = <span class="var">'-----------------'</span>
 <span class="kw">AND</span> ID_KEY = <span class="str">'-----------------'</span>;</code></pre>
-                </div>
-            </div>
-        </div>
+                                </div>
+                            </div>
+                        </div>
 
-    </div>
-</section>
+                    </div>
+                </section>
 
                 <section id="tables-section" class="content-section">
                     <div class="section-header">
@@ -2181,27 +2276,27 @@
             });
 
             // --- Copy SQL to Clipboard ---
-const copySqlBtns = document.querySelectorAll('.copy-sql');
-copySqlBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        // Target the code block inside the specific IDE container clicked
-        const codeBlock = e.target.closest('.ide-container').querySelector('.sql-code');
-        const textToCopy = codeBlock.textContent;
+            const copySqlBtns = document.querySelectorAll('.copy-sql');
+            copySqlBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Target the code block inside the specific IDE container clicked
+                    const codeBlock = e.target.closest('.ide-container').querySelector('.sql-code');
+                    const textToCopy = codeBlock.textContent;
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-            btn.style.color = 'var(--primary-color)';
-            btn.style.borderColor = 'var(--primary-color)';
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalHtml = btn.innerHTML;
+                        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                        btn.style.color = 'var(--primary-color)';
+                        btn.style.borderColor = 'var(--primary-color)';
 
-            setTimeout(() => {
-                btn.innerHTML = originalHtml;
-                btn.style.color = '';
-                btn.style.borderColor = '';
-            }, 2000);
-        });
-    });
-});
+                        setTimeout(() => {
+                            btn.innerHTML = originalHtml;
+                            btn.style.color = '';
+                            btn.style.borderColor = '';
+                        }, 2000);
+                    });
+                });
+            });
 
             // --- 6. Stretched Diagonal Path Generator ---
             function buildDiagonalPath(containerId, steps) {
@@ -2366,6 +2461,36 @@ copySqlBtns.forEach(btn => {
             });
 
         });
+
+        // --- Theme Color Picker Logic ---
+const htmlEl = document.documentElement;
+const themeDots = document.querySelectorAll('.theme-dot');
+
+// 1. Check local storage for a saved color, default to 'indigo'
+const savedColor = localStorage.getItem('erp-color') || 'indigo';
+htmlEl.setAttribute('data-color', savedColor);
+
+// 2. Setup the dots
+themeDots.forEach(dot => {
+    // Make the saved color's dot "active" on load
+    if(dot.getAttribute('data-color') === savedColor) {
+        dot.classList.add('active');
+    }
+    
+    // Listen for clicks on the dots
+    dot.addEventListener('click', (e) => {
+        // Remove 'active' ring from all dots
+        themeDots.forEach(d => d.classList.remove('active'));
+        
+        // Add 'active' ring to the clicked dot
+        e.target.classList.add('active');
+        
+        // Change the theme color and save it to the browser
+        const color = e.target.getAttribute('data-color');
+        htmlEl.setAttribute('data-color', color);
+        localStorage.setItem('erp-color', color);
+    });
+});
     </script>
 </body>
 
