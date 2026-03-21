@@ -795,69 +795,446 @@
         }
 
         /* --- Database Tables Grid & Upgrades --- */
-.tables-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 24px;
-}
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 24px;
+        }
 
-.table-header-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+        .table-header-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
-.table-name-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .table-name-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.copy-table-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
-    opacity: 0.5;
-}
+        .copy-table-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            opacity: 0.5;
+        }
 
-.card:hover .copy-table-btn {
-    opacity: 1; /* Appears clearly when hovering over the card */
-}
+        .card:hover .copy-table-btn {
+            opacity: 1;
+            /* Appears clearly when hovering over the card */
+        }
 
-.copy-table-btn:hover {
-    color: var(--primary-color);
-    background-color: var(--hover-bg);
-}
+        .copy-table-btn:hover {
+            color: var(--primary-color);
+            background-color: var(--hover-bg);
+        }
 
-.env-badges {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px;
-}
+        .env-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
 
-.env-badge {
-    font-size: 11px;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
-}
+        .env-badge {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
-.env-live { background-color: #dcfce3; color: #166534; border: 1px solid #bbf7d0; }
-.env-test { background-color: #fef08a; color: #854d0e; border: 1px solid #fde047; }
+        .env-live {
+            background-color: #dcfce3;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
 
-/* Mobile adjustment for tables grid */
-@media (max-width: 768px) {
-    .tables-grid {
-        grid-template-columns: 1fr; /* Stacks on mobile */
-    }
-}
+        .env-test {
+            background-color: #fef08a;
+            color: #854d0e;
+            border: 1px solid #fde047;
+        }
+
+        /* Mobile adjustment for tables grid */
+        @media (max-width: 768px) {
+            .tables-grid {
+                grid-template-columns: 1fr;
+                /* Stacks on mobile */
+            }
+        }
+
+        /* --- Grouped Tables UI --- */
+        .grouped-table-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .grouped-table-header h2 {
+            font-size: 20px;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .table-list-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .table-list-item {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 6px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .table-list-item:hover {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            transform: translateX(4px);
+            /* Slight hover pop to the right */
+            border-color: var(--primary-color);
+        }
+
+        .table-list-item p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* --- Premium SQL IDE & Grid Styles --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 28px;
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        /* Risk Badges */
+        .risk-badge {
+            font-size: 11px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .risk-safe {
+            background-color: #dcfce3;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .risk-warn {
+            background-color: #fef08a;
+            color: #854d0e;
+            border: 1px solid #fde047;
+        }
+
+        .risk-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        /* Code Editor UI */
+        .ide-container {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .ide-header {
+            background-color: var(--hover-bg);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .ide-db-target i {
+            color: var(--primary-color);
+            margin-right: 6px;
+        }
+
+        .ide-copy-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .ide-copy-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Code Block & Syntax Highlighting */
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .kw {
+            color: #c678dd;
+            font-weight: bold;
+        }
+
+        /* Keywords: SELECT, FROM */
+        .str {
+            color: #98c379;
+        }
+
+        /* Strings: 'text' */
+        .var {
+            color: #e06c75;
+        }
+
+        /* Variables: @id */
+        .fn {
+            color: #61afef;
+        }
+
+        /* Tables/Functions */
+        .cm {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        /* Comments */
+        .num {
+            color: #d19a66;
+        }
+
+        /* Numbers */
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Premium SQL IDE & Responsive Grid Styles --- */
+        .grid-container {
+            display: grid;
+            /* Changed from 400px to 300px so it scales smoothly on smaller tablets/phones */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            /* Allows badges to wrap to the next line on very small screens */
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Risk Badges */
+        .risk-badge {
+            font-size: 11px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+            /* Prevents badge from squishing */
+        }
+
+        .risk-safe {
+            background-color: #dcfce3;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .risk-warn {
+            background-color: #fef08a;
+            color: #854d0e;
+            border: 1px solid #fde047;
+        }
+
+        .risk-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        /* Code Editor UI */
+        .ide-container {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .ide-header {
+            background-color: var(--hover-bg);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ide-db-target {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .ide-db-target i {
+            color: var(--primary-color);
+            margin-right: 6px;
+        }
+
+        .ide-copy-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 12px;
+        }
+
+        .ide-copy-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Code Block & Syntax Highlighting */
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 16px;
+            /* CRITICAL FOR MOBILE: Allows horizontal swiping of code */
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            width: 100%;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+            width: max-content;
+        }
+
+        .kw {
+            color: #c678dd;
+            font-weight: bold;
+        }
+
+        /* Keywords: SELECT, FROM */
+        .str {
+            color: #98c379;
+        }
+
+        /* Strings: 'text' */
+        .var {
+            color: #e06c75;
+        }
+
+        /* Variables: @id */
+        .fn {
+            color: #61afef;
+        }
+
+        /* Tables/Functions */
+        .cm {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        /* Comments */
+        .num {
+            color: #d19a66;
+        }
+
+        /* Numbers */
+
+        /* Mobile Breakpoints */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .ide-header {
+                padding: 8px 12px;
+            }
+
+            .code-block {
+                padding: 12px;
+                font-size: 12px;
+            }
+
+            /* Slightly smaller font for phones */
+        }
     </style>
 </head>
 
@@ -1176,104 +1553,353 @@
 
 
                 <section id="sql-section" class="content-section">
-                    <div class="section-header">
-                        <h1>SQL Queries</h1>
-                        <p>Frequently used scripts for data extraction and reporting.</p>
-                    </div>
+    <div class="section-header">
+        <h1>SQL Query Library</h1>
+        <p>Essential CRUD operations, data extraction, and database modifications.</p>
+    </div>
 
-                    <div class="card searchable-item" data-category="SQL">
-                        <div class="card-header-flex">
-                            <div>
-                                <span class="card-tag">SQL Script</span>
-                                <h3 class="search-target">Get Latest Inventory Receipts</h3>
-                            </div>
-                            <button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy SQL</button>
-                        </div>
-                        <p class="description search-target">Pulls the last 50 item receipts including vendor details.
-                        </p>
-                        <div class="code-block">
-                            <pre><code>SELECT 
+    <div class="grid-container">
+
+        <div class="card searchable-item" data-category="SQL">
+            <div class="card-header-flex">
+                <div>
+                    <span class="card-tag">DML - Read</span>
+                    <h3 class="search-target">Get Latest Inventory Receipts</h3>
+                </div>
+                <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
+            </div>
+            <p class="description search-target">Pulls the last 50 item receipts including vendor details.</p>
+            
+            <div class="ide-container">
+                <div class="ide-header">
+                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <div class="code-block">
+<pre><code class="sql-code"><span class="kw">SELECT</span> 
     r.Receipt_ID, 
     r.Item_Code, 
     i.Item_Name, 
     r.Quantity, 
     r.Receipt_Date
-FROM tbl_Receipts r
-JOIN tbl_ItemMaster i ON r.Item_Code = i.Item_Code
-ORDER BY r.Receipt_Date DESC
-LIMIT 50;</code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="tables-section" class="content-section">
-    <div class="section-header">
-        <h1>Database Tables</h1>
-        <p>Core ERP table structures and definitions.</p>
-        <div class="env-badges">
-            <span class="env-badge env-live"><i class="fa-solid fa-database"></i> Live: VIESL_LIVE</span>
-            <span class="env-badge env-test"><i class="fa-solid fa-vial"></i> Test: TESTDATA</span>
-        </div>
-    </div>
-
-    <div class="tables-grid">
-        
-        <div class="card searchable-item" data-category="Table">
-            <div class="card-header-flex">
-                <div class="table-header-group">
-                    <div>
-                        <span class="card-tag">Indent/PR</span>
-                        <div class="table-name-wrapper">
-                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i>  TRINVS</h3>
-                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
+<span class="kw">FROM</span> <span class="fn">tbl_Receipts</span> r
+<span class="kw">JOIN</span> <span class="fn">tbl_ItemMaster</span> i <span class="kw">ON</span> r.Item_Code = i.Item_Code
+<span class="kw">ORDER BY</span> r.Receipt_Date <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">50</span>;</code></pre>
                 </div>
-            </div>
-            <div class="table-description-box">
-                <strong>Description:</strong>
-                <p class="search-target">The central repository for all inventory, non-inventory, and fixed asset items. Acts as the primary source of truth for stock levels and item categorization across all modules.</p>
             </div>
         </div>
 
-        <div class="card searchable-item" data-category="Table">
+        <div class="card searchable-item" data-category="SQL">
             <div class="card-header-flex">
-                <div class="table-header-group">
-                    <div>
-                        <span class="card-tag">Transaction Schema</span>
-                        <div class="table-name-wrapper">
-                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_Receipts</h3>
-                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
+                <div>
+                    <span class="card-tag">DML - Update</span>
+                    <h3 class="search-target">Correct Stock Quantity</h3>
                 </div>
+                <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i> Caution</span>
             </div>
-            <div class="table-description-box">
-                <strong>Description:</strong>
-                <p class="search-target">Logs every incoming material transaction. Stores links between Vendor IDs, Gate Entry numbers, and Warehouse locations to maintain a full audit trail of inventory procurement.</p>
+            <p class="description search-target">Manually overrides the stock level. Always ensure WHERE clause is active.</p>
+            
+            <div class="ide-container">
+                <div class="ide-header">
+                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <div class="code-block">
+<pre><code class="sql-code"><span class="kw">BEGIN TRAN</span>;
+
+<span class="kw">UPDATE</span> <span class="fn">tbl_ItemMaster</span>
+<span class="kw">SET</span> Current_Stock = <span class="var">@CorrectValue</span>,
+    Last_Modified = <span class="kw">GETDATE</span>()
+<span class="kw">WHERE</span> Item_Code = <span class="str">'ITM-10024'</span>;
+
+<span class="cm">-- COMMIT TRAN; -- Uncomment after verification</span></code></pre>
+                </div>
             </div>
         </div>
 
-        <div class="card searchable-item" data-category="Table">
+        <div class="card searchable-item" data-category="SQL">
             <div class="card-header-flex">
-                <div class="table-header-group">
-                    <div>
-                        <span class="card-tag">System Schema</span>
-                        <div class="table-name-wrapper">
-                            <h3 class="table-name-title search-target"><i class="fa-solid fa-table-list"></i> tbl_UserLogs</h3>
-                            <button class="copy-table-btn" title="Copy table name"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
+                <div>
+                    <span class="card-tag">DML - Delete</span>
+                    <h3 class="search-target">Remove Stalled Gate Entry</h3>
                 </div>
+                <span class="risk-badge risk-danger"><i class="fa-solid fa-skull-crossbones"></i> High Risk</span>
             </div>
-            <div class="table-description-box">
-                <strong>Description:</strong>
-                <p class="search-target">Maintains a historical record of all user actions within the ERP system, including login timestamps, module access, and data modification entries for security auditing.</p>
+            <p class="description search-target">Deletes an abandoned gate entry. Fails if foreign keys exist in POs.</p>
+            
+            <div class="ide-container">
+                <div class="ide-header">
+                    <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                    <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <div class="code-block">
+<pre><code class="sql-code"><span class="kw">DELETE FROM</span> <span class="fn">tbl_GateEntry</span>
+<span class="kw">WHERE</span> Entry_ID = <span class="var">@GateID</span>
+<span class="kw">AND</span> Status = <span class="str">'STALLED'</span>;</code></pre>
+                </div>
             </div>
         </div>
 
     </div>
 </section>
+
+                <section id="tables-section" class="content-section">
+                    <div class="section-header">
+                        <h1>Database Tables</h1>
+                        <p>Core ERP table structures and definitions.</p>
+                        <div class="env-badges">
+                            <span class="env-badge env-live"><i class="fa-solid fa-database"></i> Live:
+                                VIESL_LIVE</span>
+                            <span class="env-badge env-test"><i class="fa-solid fa-vial"></i> Test: TESTDATA</span>
+                        </div>
+                    </div>
+
+                    <div class="tables-grid">
+
+                        <div class="card searchable-item" data-category="Table Group">
+
+                            <div class="grouped-table-header">
+                                <span class="card-tag">Schema Category</span>
+                                <h2 class="search-target">Indent / PR & Workflows</h2>
+                                <p class="description search-target" style="margin-bottom: 0;">Core tables managing
+                                    purchase requisitions, transactions, and system audit trails.</p>
+                            </div>
+
+                            <div class="table-list-group">
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> trinvs</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All the transactions in ERP are stored here for audit and
+                                        reporting purposes.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> spordsch</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It stores PR/PO's.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> wflowtrn</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It stores the workflow of every single transaction.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> workflow</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It stores authorization workflows for various business
+                                        processes.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> auditrl</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It shows who closed, authorised, or created documents.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> poindt</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It checks if a PO has been generated against the PR/indent.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--------------------------------------------------------------------------------------------------------------->
+                        <div class="card searchable-item" data-category="Table Group">
+
+                            <div class="grouped-table-header">
+                                <span class="card-tag">Schema Category</span>
+                                <h2 class="search-target">Purchase Order/PO & Workflows</h2>
+                                <p class="description search-target" style="margin-bottom: 0;">Core tables managing
+                                    purchase requisitions, transactions, and system audit trails.</p>
+                            </div>
+
+                            <div class="table-list-group">
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> trinvs</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All the transactions in ERP are stored here for audit and
+                                        reporting purposes.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> trinvsa</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All the transactions in ERP are stored here for audit and
+                                        reporting purposes.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> sporddtl</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All the transactions in ERP are stored here for audit and
+                                        reporting purposes.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> poindt</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">It checks if PO is generated against the PR.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> wflowtrn</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">Document working flow.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> wflowtrx</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">Document working flow.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> auditr1</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">Document working flow.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--------------------------------------------------------------------------------------------------------------->
+                        <div class="card searchable-item" data-category="Table Group">
+
+                            <div class="grouped-table-header">
+                                <span class="card-tag">Schema Category</span>
+                                <h2 class="search-target">Goods Receipt Note/GRN & Workflows</h2>
+                                <p class="description search-target" style="margin-bottom: 0;">Core tables managing
+                                    purchase requisitions, transactions, and system audit trails.</p>
+                            </div>
+
+                            <div class="table-list-group">
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> projact</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All GRN stored here.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> astutltrn</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All GRN stored here.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card searchable-item" data-category="Table Group">
+
+                            <div class="grouped-table-header">
+                                <span class="card-tag">Schema Category</span>
+                                <h2 class="search-target">Gate Entry</h2>
+                                <p class="description search-target" style="margin-bottom: 0;">Core tables managing
+                                    purchase requisitions, transactions, and system audit trails.</p>
+                            </div>
+
+                            <div class="table-list-group">
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> trinvs</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All documents are stored here.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> schexec</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">Checks gate entry againts.</p>
+                                </div>
+
+                                <div class="table-list-item">
+                                    <div class="table-name-wrapper">
+                                        <h3 class="table-name-title search-target"><i
+                                                class="fa-solid fa-table-list"></i> geitems</h3>
+                                        <button class="copy-table-btn" title="Copy table name"><i
+                                                class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                    <p class="search-target">All line level items are stored here.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
 
                 <section id="links-section" class="content-section">
                     <div class="section-header">
@@ -1298,7 +1924,7 @@ LIMIT 50;</code></pre>
                                 <p class="search-target">POEXW</p>
                             </div>
                         </a>
-                        
+
                     </div>
                 </section>
 
@@ -1541,27 +2167,28 @@ LIMIT 50;</code></pre>
                 searchInput.focus();
             });
 
-            // --- 5. Copy SQL to Clipboard ---
-            const copyBtns = document.querySelectorAll('.copy-btn');
-            copyBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const codeBlock = e.target.closest('.card').querySelector('code');
-                    const textToCopy = codeBlock.innerText;
+            // --- Copy SQL to Clipboard ---
+const copySqlBtns = document.querySelectorAll('.copy-sql');
+copySqlBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Target the code block inside the specific IDE container clicked
+        const codeBlock = e.target.closest('.ide-container').querySelector('.sql-code');
+        const textToCopy = codeBlock.textContent;
 
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        const originalHtml = btn.innerHTML;
-                        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-                        btn.style.color = 'var(--primary-color)';
-                        btn.style.borderColor = 'var(--primary-color)';
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            btn.style.color = 'var(--primary-color)';
+            btn.style.borderColor = 'var(--primary-color)';
 
-                        setTimeout(() => {
-                            btn.innerHTML = originalHtml;
-                            btn.style.color = '';
-                            btn.style.borderColor = '';
-                        }, 2000);
-                    });
-                });
-            });
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
             // --- 6. Stretched Diagonal Path Generator ---
             function buildDiagonalPath(containerId, steps) {
@@ -1687,35 +2314,35 @@ LIMIT 50;</code></pre>
             const excelTag = ["EID IN/OUT (Excel/xBase/Text)", "EID IN/OUT", "EID In(Excel/xBase/Text)", "Masters/Control", "Item", "Tag Additional Location", "Tag excel file"];
             buildDiagonalPath('Excel-Tag', excelTag);
 
-            const townCodePath = ["Masters+Controls+Configuration", "Distribution", "Geographical Hierarchy", "Town","Add","save"];
+            const townCodePath = ["Masters+Controls+Configuration", "Distribution", "Geographical Hierarchy", "Town", "Add", "save"];
             buildDiagonalPath('Town-Code', townCodePath);
 
-            const hsnGstPath = ["Masters+Controls+Configuration", "Pur+Sale", "GST/Custom Tariff (HSN/SAC xDate)","Search/Add"];
+            const hsnGstPath = ["Masters+Controls+Configuration", "Pur+Sale", "GST/Custom Tariff (HSN/SAC xDate)", "Search/Add"];
             buildDiagonalPath('HSN-GST', hsnGstPath);
 
 
             // Critical fix: Re-capture nodes into searchTargets AFTER JS builds them dynamically
 
             // --- Copy Table Name to Clipboard ---
-const copyTableBtns = document.querySelectorAll('.copy-table-btn');
-copyTableBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        // Find the adjacent h3 tag and grab its text (ignoring the icon HTML)
-        const tableNameEl = e.currentTarget.parentElement.querySelector('.table-name-title');
-        const textToCopy = tableNameEl.textContent.trim();
+            const copyTableBtns = document.querySelectorAll('.copy-table-btn');
+            copyTableBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Find the adjacent h3 tag and grab its text (ignoring the icon HTML)
+                    const tableNameEl = e.currentTarget.parentElement.querySelector('.table-name-title');
+                    const textToCopy = tableNameEl.textContent.trim();
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            const icon = btn.querySelector('i');
-            icon.classList.replace('fa-copy', 'fa-check');
-            btn.style.color = 'var(--primary-color)';
-            
-            setTimeout(() => {
-                icon.classList.replace('fa-check', 'fa-copy');
-                btn.style.color = '';
-            }, 1500);
-        });
-    });
-});
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const icon = btn.querySelector('i');
+                        icon.classList.replace('fa-copy', 'fa-check');
+                        btn.style.color = 'var(--primary-color)';
+
+                        setTimeout(() => {
+                            icon.classList.replace('fa-check', 'fa-copy');
+                            btn.style.color = '';
+                        }, 1500);
+                    });
+                });
+            });
 
 
 
