@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const jvPath = ["Day to Day Transactions", "Accounts(G/L)", "Journal(JVs)", "Local"];
     buildDiagonalPath('JV', jvPath);
 
-    const deliveryChallanPath = ["Day to Day Transactions", "Sales", "Transfer - (Item)", "Intra", "W -> W", "Remote Transfer to Transit"];
+    const deliveryChallanPath = ["Day to Day Transactions", "Transfer - (Item)", "Intra", "W -> W", "Remote Transfer to Transit"];
     buildDiagonalPath('Delivery-Challan', deliveryChallanPath);
 
     const deleteDNPath = ["Day to Day Transactions", "Accounts(G/L)", "Purchase", "Debit Note/Credit Note"];
