@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stockAdjPath = ["Stores", "Issue (Item)", "General"];
     buildDiagonalPath('path-stock-adj', stockAdjPath);
 
-    const issueItemPath = ["Stores", "Issue Item","Production","Warehouse", "Requisition & Consumption"];
+    const issueItemPath = ["Stores", "Issue Item", "Production", "Warehouse", "Requisition & Consumption"];
     buildDiagonalPath('issue-item', issueItemPath);
 
     const logSheetPath = ["Day to Day Transactions", "Project (WBS)", "Resource Utilization"];
