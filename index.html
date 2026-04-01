@@ -28,6 +28,7 @@
                 <li class="active" data-target="paths-section"><i class="fa-solid fa-route"></i> Navigation Paths</li>
                 <li data-target="sql-section"><i class="fa-solid fa-database"></i> SQL Queries</li>
                 <li data-target="tables-section"><i class="fa-solid fa-table"></i> DB Tables</li>
+                <li data-target="errors-section"><i class="fa-solid fa-exclamation-triangle"></i> Errors</li>
                 <li data-target="links-section"><i class="fa-solid fa-link"></i>Doc Type & Series</li>
                 <li data-target="other-section"><i class="fa-solid fa-folder-open"></i> Other Resources</li>
             </ul>
@@ -339,6 +340,59 @@
 
                 </section>
 
+                <section id="errors-section" class="content-section">
+                    <div class="section-header">
+                        <h1>Troubleshooting & Errors</h1>
+                        <p>Resolution workflows and database fixes for common ERP system errors.</p>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Error">
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag"
+                                    style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444;">UI Fix</span>
+                                <h3 class="search-target">GST Not Found / Invalid GST Code</h3>
+                            </div>
+                        </div>
+                        <p class="description search-target">Resolves GST-related issues when processing transactions by
+                            verifying location configurations.</p>
+
+                        <div id="error-path-1" class="dynamic-flow-container"></div>
+                    </div>
+
+                    <div class="card searchable-item" data-category="Error">
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag"
+                                    style="background-color: rgba(249, 115, 22, 0.1); color: #ea580c;">Database
+                                    Fix</span>
+                                <h3 class="search-target">Reference price lesser or greater than 25%</h3>
+                            </div>
+                            <span class="risk-badge risk-warn"><i class="fa-solid fa-triangle-exclamation"></i>
+                                Update</span>
+                        </div>
+                        <p class="description search-target">If the document is saved then modification in ERP is not allowed. You must update in SQL <strong>maitemh</strong> table.</p>
+
+                        <div class="ide-container">
+                            <div class="ide-header">
+                                <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                                <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="sql-code"><span class="cm">-- 1. Verify the item first</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="fn">maitemh</span> 
+<span class="kw">WHERE</span> im_code = <span class="str">'[INSERT_ITEM_CODE_HERE]'</span>;
+
+<span class="cm">-- 2. Apply the fix (Sets reference price to 1)</span>
+<span class="kw">UPDATE</span> <span class="fn">maitemh</span> 
+<span class="kw">SET</span> im_refpric = <span class="num">1</span> 
+<span class="kw">WHERE</span> im_code = <span class="str">'[INSERT_ITEM_CODE_HERE]'</span>;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
 
                 <section id="sql-section" class="content-section">
                     <div class="section-header">
@@ -347,28 +401,29 @@
                     </div>
 
                     <div class="card searchable-item" data-category="SQL">
-    <div class="card-header-flex">
-        <div>
-            <span class="card-tag">DML - Read</span>
-            <h3 class="search-target">Check Audit Trail Details</h3>
-        </div>
-        <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
-    </div>
-    <p class="description search-target">Use this query to track user actions (ADD) within a specific date range.</p>
+                        <div class="card-header-flex">
+                            <div>
+                                <span class="card-tag">DML - Read</span>
+                                <h3 class="search-target">Check Audit Trail Details</h3>
+                            </div>
+                            <span class="risk-badge risk-safe"><i class="fa-solid fa-shield-check"></i> Safe</span>
+                        </div>
+                        <p class="description search-target">Use this query to track user actions (ADD) within a
+                            specific date range.</p>
 
-    <div class="ide-container">
-        <div class="ide-header">
-            <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
-            <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
-        </div>
-        <div class="code-block">
-            <pre><code class="sql-code"><span class="kw">SELECT</span> 
+                        <div class="ide-container">
+                            <div class="ide-header">
+                                <span class="ide-db-target"><i class="fa-solid fa-database"></i> VIESL_LIVE</span>
+                                <button class="ide-copy-btn copy-sql"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <div class="code-block">
+                                <pre><code class="sql-code"><span class="kw">SELECT</span> 
     SYS_INFO, * <span class="kw">FROM</span> <span class="fn">auditrl</span> 
 <span class="kw">WHERE</span> DATE_STMP <span class="kw">BETWEEN</span> <span class="str">'2026-01-20'</span> <span class="kw">AND</span> <span class="str">'2026-01-26'</span> 
 <span class="kw">AND</span> ACTION = <span class="str">'ADD'</span>;</code></pre>
-        </div>
-    </div>
-</div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="grid-container">
 

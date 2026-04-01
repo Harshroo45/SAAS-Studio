@@ -373,7 +373,31 @@ document.addEventListener('DOMContentLoaded', () => {
     buildDiagonalPath('HSN-GST', hsnGstPath);
 
 
-    // Critical fix: Re-capture nodes into searchTargets AFTER JS builds them dynamically
+
+    const error2 = ["select * from maitemh where im_code = '------'", "update maitemh set im_refpric = '1' where im_code = '------'"];
+    buildDiagonalPath('error-path-2', error2);
+
+    // --- Error Resolution Paths ---
+    const error1 = [
+        "Masters+Controls+Configuration",
+        "Masters",
+        "Locations of Enterprise",
+        "Internal",
+        "Main",
+        "Search Location",
+        "Modify",
+        "Remote Loc-Information",
+        "Compare/Update GST"
+    ];
+    buildDiagonalPath('error-path-1', error1);
+
+    // Note: You do not need a JS path for Error 2 anymore, 
+    // because the global copy-sql buttons script will automatically handle the copy button!
+
+
+
+
+    // Critical fix: Re-capture nodes into searchTargets AFTER JS builds them dynamically error-path-1
 
     // --- Copy Table Name to Clipboard ---
     const copyTableBtns = document.querySelectorAll('.copy-table-btn');
