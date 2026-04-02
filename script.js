@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const binAddPath = ["Masters+Controls+Configuration", "Masters", "Location of Enterprise", "Internal", "Bin (Sub)", "Select Location -> Add -> Code = Common", "Description = Any", "Asset code = XXXXXXX", "Save"];
     buildDiagonalPath('Bin-Add', binAddPath);
 
-    const itemTagPath = ["Masters+Controls+Configuration", "Masters", "Item + Fixed Assets", "Item", "Select Group (Item Spare(V), Trading, Power & Fuel)", "Search item code -> Modify -> Add(Location) -> C-Hook -> Quit(Save)"];
+    const itemTagPath = ["Masters+Controls+Configuration", "Masters", "Item + Fixed Assets", "Item", "Select Group (Item Spare(V), Trading, Power & Fuel)", "Search item code -> Modify -> click Add(Line Item) -> Add(Location) -> C-Hook -> Quit(Save)"];
     buildDiagonalPath('Item-Tag', itemTagPath);
 
     const addEmployeePath = ["Masters+Controls+Configuration", "Masters", "Party", "E-Employee", "EMP Code -> Name -> Address -> Save"];
