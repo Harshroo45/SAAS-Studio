@@ -1397,4 +1397,232 @@ h3 {
         font-size: 24px;
     }
 
+    
+
+}
+
+/* =======================================================
+   IMAGE GALLERY & LIGHTBOX MODAL
+   ======================================================= */
+
+/* --- Gallery Grid --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.gallery-card {
+    padding: 0; /* Remove padding for edge-to-edge image */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Perfect widescreen ratio */
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Image Hover Overlay --- */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.08); /* Smooth zoom effect */
+}
+
+/* --- Action Buttons (View/Download) --- */
+.gallery-action-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transform: translateY(15px); /* Start slightly lower */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.gallery-action-btn:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: translateY(-3px) scale(1.1) !important;
+}
+
+.gallery-card:hover .gallery-action-btn {
+    transform: translateY(0); /* Slide up into place on hover */
+}
+
+.gallery-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =======================================================
+   LIGHTBOX MODAL
+   ======================================================= */
+.image-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    animation: fadeInBg 0.3s ease forwards;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 10000;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#modal-full-img {
+    max-width: 100%;
+    max-height: calc(90vh - 80px);
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* Modal Close Button */
+.modal-close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    z-index: 2;
+}
+
+.modal-close:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* Modal Footer & Description */
+.modal-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    color: white;
+}
+
+#modal-caption {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.modal-download-action {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.modal-download-action:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+/* Modal Animations */
+@keyframes fadeInBg {
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+/* --- Mobile Responsiveness for Gallery & Modal --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Stack images on mobile */
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .modal-close {
+        top: -40px;
+        right: 0;
+    }
 }

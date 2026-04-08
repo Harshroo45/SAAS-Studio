@@ -29,6 +29,7 @@
                 <li data-target="sql-section"><i class="fa-solid fa-database"></i> SQL Queries</li>
                 <li data-target="tables-section"><i class="fa-solid fa-table"></i> DB Tables</li>
                 <li data-target="errors-section"><i class="fa-solid fa-exclamation-triangle"></i> Errors</li>
+                <li data-target="screenshots-section"><i class="fa-solid fa-camera"></i> Screenshots</li>
                 <li data-target="links-section"><i class="fa-solid fa-link"></i>Doc Type & Series</li>
                 <li data-target="other-section"><i class="fa-solid fa-folder-open"></i> Other Resources</li>
             </ul>
@@ -393,6 +394,71 @@
                     </div>
 
                 </section>
+
+                <section id="screenshots-section" class="content-section">
+    <div class="section-header">
+        <h1>System Screenshots</h1>
+        <p>Visual references, error captures, and configuration snapshots.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="card gallery-card searchable-item" data-category="Screenshot">
+            <div class="gallery-img-container">
+                <img src="/Images/BIN.png" alt="Dashboard Overview Screenshot" class="gallery-img">
+                
+                <div class="gallery-overlay">
+                    <button class="gallery-action-btn view-btn" title="View Fullscreen">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <a href="/Images/BIN.png" download="BIN_Stock_Checking.jpg" class="gallery-action-btn download-btn" title="Download Image">
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="gallery-info">
+                <span class="card-tag">Overview</span>
+                <h3 class="search-target">BIN stock checking</h3>
+                <p class="description search-target gallery-desc" style="margin-bottom: 0;">Screenshot showing how to check does that perticular BIN is availableb or not.</p>
+            </div>
+        </div>
+
+        <div class="card gallery-card searchable-item" data-category="Screenshot">
+            <div class="gallery-img-container">
+                <img src="/Images/BIN.png" alt="SQL Error Code Screenshot" class="gallery-img">
+                
+                <div class="gallery-overlay">
+                    <button class="gallery-action-btn view-btn" title="View Fullscreen">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <a href="/Images/BIN.png" download="BIN_Stock_Checking.jpg" class="gallery-action-btn download-btn" title="Download Image">
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="gallery-info">
+                <span class="card-tag" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444;">Error</span>
+                <h3 class="search-target">GST Fetch Error</h3>
+                <p class="description search-target gallery-desc" style="margin-bottom: 0;">This error triggers when the Party Master does not have a GST code mapped to the selected location.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="image-modal" class="image-modal">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+        <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+        <img src="" alt="Fullscreen Image" id="modal-full-img">
+        <div class="modal-footer">
+            <p id="modal-caption"></p>
+            <a href="#" download id="modal-download-btn" class="modal-download-action">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+    </div>
+</div>
 
 
                 <section id="sql-section" class="content-section">

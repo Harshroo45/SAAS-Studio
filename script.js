@@ -219,6 +219,51 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.focus();
     });
 
+    // --- Lightbox Modal Logic ---
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-full-img');
+const modalCaption = document.getElementById('modal-caption');
+const modalDownloadBtn = document.getElementById('modal-download-btn');
+const closeBtn = document.getElementById('modal-close');
+const backdrop = document.getElementById('modal-backdrop');
+
+// Select all "View" buttons inside the gallery
+const viewButtons = document.querySelectorAll('.view-btn');
+
+viewButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Find the closest card container to extract data
+        const card = e.target.closest('.gallery-card');
+        const imgEl = card.querySelector('.gallery-img');
+        const descEl = card.querySelector('.gallery-desc');
+        const downloadLink = card.querySelector('.download-btn').href;
+
+        // Populate Modal Data
+        modalImg.src = imgEl.src;
+        modalCaption.textContent = descEl.textContent;
+        modalDownloadBtn.href = downloadLink;
+
+        // Open Modal
+        modal.classList.add('active');
+    });
+});
+
+// Close Modal Functions
+function closeModal() {
+    modal.classList.remove('active');
+    setTimeout(() => { modalImg.src = ''; }, 300); // Clear source after animation
+}
+
+closeBtn.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModal);
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
     // --- Copy SQL to Clipboard ---
     const copySqlBtns = document.querySelectorAll('.copy-sql');
     copySqlBtns.forEach(btn => {
