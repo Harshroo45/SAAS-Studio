@@ -1885,43 +1885,30 @@
 
                     <div class="card searchable-item" data-category="Other" style="margin-bottom: 32px;">
     <span class="card-tag">Config Note</span>
-    <h3 class="search-target">Asset code not found in .Net/FoxPro</h3>
+    <h3 class="search-target">Workflow Reset Queries</h3>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        1. <strong>SELECT im_active, * FROM MAITEM WHERE im_code = 'HLGV110021';</strong>
-        — Run this query and set <strong>im_active = 1</strong>.
-    </p>
-
-    <p class="description search-target" style="margin-bottom: 12px;">
-        2. Go to <strong>Item Master → Fixed Asset → Location (Yard)</strong> and search the item code.
-    </p>
-
-    <hr>
-
-    <p class="description search-target" style="margin-bottom: 0;">
-        <strong>Workflow Reset Queries:</strong>
+        1. <strong>SELECT * FROM wflowtrn WHERE doc_no = 'BKP022508000254';</strong>
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <code>SELECT * FROM wflowtrn WHERE doc_no = 'BKP022508000254';</code>
+        2. <strong>UPDATE wflowtrn SET post_flag = 'O' WHERE doc_no = 'BKP022508000254';</strong>
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <code>-- UPDATE wflowtrn SET post_flag = 'O' WHERE doc_no = 'BKP022508000254';</code>
+        3. <strong>UPDATE trvchr SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <code>-- UPDATE trvchr SET post_flag = '' WHERE doc_no = 'BKP022508000254';</code>
+        4. <strong>UPDATE trparty SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <code>-- UPDATE trparty SET post_flag = '' WHERE doc_no = 'BKP022508000254';</code>
-    </p>
-
-    <p class="description search-target" style="margin-bottom: 0;">
-        <code>-- UPDATE trinvs SET post_flag = '' WHERE doc_no = 'BKP022508000254';</code>
+        5. <strong>UPDATE trinvs SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
     </p>
 </div>
+
+                    
 
                     <h3 style="margin-bottom: 16px; font-size: 18px; color: var(--text-primary);">Document Library</h3>
 
