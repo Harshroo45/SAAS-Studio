@@ -1885,26 +1885,26 @@
 
                     <div class="card searchable-item" data-category="Other" style="margin-bottom: 32px;">
     <span class="card-tag">Config Note</span>
-    <h3 class="search-target">Workflow Reset Queries</h3>
+    <h3 class="search-target">Delete Bank Payment Entries - BKPO</h3>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <strong>SELECT * FROM wflowtrn WHERE doc_no = 'BKP022508000254';</strong>
+        <strong>SELECT * FROM wflowtrn WHERE doc_no = 'BKP022508000254';</strong></br>
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <strong>UPDATE wflowtrn SET post_flag = 'O' WHERE doc_no = 'BKP022508000254';</strong>
+        UPDATE wflowtrn SET post_flag = 'O' WHERE doc_no = 'BKP022508000254';
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <strong>UPDATE trvchr SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
+        UPDATE trvchr SET post_flag = '' WHERE doc_no = 'BKP022508000254';
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <strong>UPDATE trparty SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
+        UPDATE trparty SET post_flag = '' WHERE doc_no = 'BKP022508000254';
     </p>
 
     <p class="description search-target" style="margin-bottom: 0;">
-        <strong>UPDATE trinvs SET post_flag = '' WHERE doc_no = 'BKP022508000254';</strong>
+        UPDATE trinvs SET post_flag = '' WHERE doc_no = 'BKP022508000254';
     </p>
 </div>
 
