@@ -1888,6 +1888,11 @@
     <h3 class="search-target">Delete Bank Payment Entries - BKPO</h3>
 
     <p class="description search-target" style="margin-bottom: 0;">
+        <strong>begin tran</strong>
+    </p>
+    <br>
+
+    <p class="description search-target" style="margin-bottom: 0;">
         <strong>SELECT * FROM wflowtrn WHERE doc_no = 'BKP022508000254';</strong></br>
     </p>
 
@@ -1905,6 +1910,11 @@
 
     <p class="description search-target" style="margin-bottom: 0;">
         UPDATE trinvs SET post_flag = '' WHERE doc_no = 'BKP022508000254';
+    </p>
+    <br>
+
+    <p class="description search-target" style="margin-bottom: 0;">
+        <strong>commit</strong>
     </p>
 </div>
 
